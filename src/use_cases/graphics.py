@@ -108,8 +108,8 @@ class Graphics:
 
         self._ax.plot(x, y, z, style, c=color)
 
-    def plot_plane(self, plane: Plane, plane_range: list[float] = (-0.5, 0.5), alpha: float = 0.5) -> None:
-        linspace: np.ndarray = np.linspace(*plane_range, 10)
+    def plot_plane(self, plane: Plane, center: Point, size: float = 0.2, alpha: float = 0.5) -> None:
+        linspace: np.ndarray = np.linspace(-size, size, 2)
         meshgrid: list[np.ndarray] = np.meshgrid(linspace, linspace)
 
         non_zero_vector: tuple(int) = (0 if abs(plane.a) < 0.01 else 1,
@@ -118,25 +118,33 @@ class Graphics:
 
         match(non_zero_vector):
             case (0, 0, 1):
-                X, Y = meshgrid
-                Z = np.zeros_like(X) - plane.d
+                plane_x: np.ndarray = meshgrid[0] + center.x
+                plane_y: np.ndarray = meshgrid[1] + center.y
+                plane_z: np.ndarray = np.zeros_like(plane_x) - plane.d
             case (0, 1, 0):
-                X, Z = meshgrid
-                Y = np.zeros_like(X) - plane.d
+                plane_x: np.ndarray = meshgrid[0] + center.x
+                plane_z: np.ndarray = meshgrid[1] + center.z
+                plane_y: np.ndarray = np.zeros_like(plane_x) - plane.d
             case (0, 1, 1):
-                X, Z = meshgrid
-                Y = (-plane.d - plane.c*Z)/plane.b
+                plane_x: np.ndarray = meshgrid[0] + center.x
+                plane_z: np.ndarray = meshgrid[1] + center.z
+                plane_y: np.ndarray = (-plane.d - plane.c*plane_z)/plane.b
             case (1, 0, 0):
-                Y, Z = meshgrid
-                X = np.zeros_like(Y) - plane.d
+                plane_y: np.ndarray = meshgrid[0] + center.y
+                plane_z: np.ndarray = meshgrid[1] + center.z
+                plane_x: np.ndarray = np.zeros_like(plane_y) - plane.d
             case (1, 0, 1):
-                X, Y = meshgrid
-                Z = (-plane.d - plane.a*X)/plane.c
+                plane_x: np.ndarray = meshgrid[0] + center.x
+                plane_y: np.ndarray = meshgrid[1] + center.y
+                plane_z: np.ndarray = (-plane.d - plane.a*plane_x)/plane.b
             case (1, 1, 0):
-                X, Z = meshgrid
-                Y = (-plane.d - plane.a*X)/plane.b
+                plane_x: np.ndarray = meshgrid[0] + center.x
+                plane_z: np.ndarray = meshgrid[1] + center.z
+                plane_y: np.ndarray = (-plane.d - plane.a*plane_x)/plane.b
             case (1, 1, 1):
-                X, Y = meshgrid
-                Z = (-plane.d - plane.a*X - plane.b*Y)/plane.c
+                plane_x: np.ndarray = meshgrid[0] + center.x
+                plane_y: np.ndarray = meshgrid[1] + center.y
+                plane_z: np.ndarray = (-plane.d - plane.a *
+                                       plane_x - plane.b*plane_y)/plane.c
 
-        self._ax.plot_surface(X, Y, Z, alpha=alpha)
+        self._ax.plot_surface(plane_x, plane_y, plane_z, alpha=alpha)

@@ -22,9 +22,9 @@ def main():
     
     # Graphics
     graphics: Graphics = Graphics()
-    graphics.set_limits(xlim=(-0.5, 0.5),
-                    ylim=(-0.5, 0.5),
-                    zlim=(0.0,0.5))
+    graphics.set_limits(xlim=(-0.1, 0.7),
+                    ylim=(-0.1, 0.5),
+                    zlim=(0.0,0.3))
     
     # Entities
     target: Point = positions[-1] + Point(0.1, 0.1, 0.1)
@@ -77,7 +77,7 @@ def main():
     graphics.plot_oriented_point(target, axes_list[-1], color='k')
     graphics.plot_points([p5, target], style='-o')
     graphics.plot_vector(z5, p5)
-    graphics.plot_plane(plane5)
+    graphics.plot_plane(plane5, center=p5)
     
     graphics.show()
     graphics.clear()
