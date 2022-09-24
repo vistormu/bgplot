@@ -46,11 +46,11 @@ class Graphics:
     def plot_point(self, point: Point, color: str = 'r') -> None:
         self._ax.scatter(*point, c=color)
 
-    def plot_oriented_point(self, point: Point, axes: Axes, length: float = 0.1, color: str = 'r') -> None:
+    def plot_oriented_point(self, point: Point, axes: Axes, length: float = 0.025, color: str = 'r') -> None:
         self._ax.scatter(*point, c=color)
         self.plot_axes(axes, point, length=length)
 
-    def plot_vector(self, vector: Vector, position: Point, length: float = 0.1, color: str = 'b') -> None:
+    def plot_vector(self, vector: Vector, position: Point, length: float = 0.025, color: str = 'b') -> None:
         color_dict: dict = {'r': (1.0, 0.0, 0.0),
                             'g': (0.0, 1.0, 0.0),
                             'b': (0.0, 0.0, 1.0),
@@ -61,7 +61,7 @@ class Graphics:
                         length=length,
                         colors=color_dict[color])
 
-    def plot_vectors(self, vectors: list[Vector], positions: list[Point], length: float = 0.1, color: str = 'b') -> None:
+    def plot_vectors(self, vectors: list[Vector], positions: list[Point], length: float = 0.025, color: str = 'b') -> None:
         color_dict: dict = {'r': (1.0, 0.0, 0.0),
                             'g': (0.0, 1.0, 0.0),
                             'b': (0.0, 0.0, 1.0),
@@ -80,7 +80,7 @@ class Graphics:
                         length=length,
                         colors=color_dict[color])
 
-    def plot_axes(self, axes: Axes, position: Point, length: float = 0.05) -> None:
+    def plot_axes(self, axes: Axes, position: Point, length: float = 0.025) -> None:
         self._ax.quiver(position.x, position.y, position.z,
                         axes.x.u, axes.x.v, axes.x.w,
                         length=length,
@@ -102,13 +102,13 @@ class Graphics:
 
     def plot_line(self, line: Line, line_range: tuple[float] = (-2.0, 2.0), style: str = '-', color: str = 'k') -> None:
         t: np.ndarray = np.linspace(*line_range)
-        x: np.ndarray = np.array(line.x + t*line.a)
-        y: np.ndarray = np.array(line.y + t*line.b)
-        z: np.ndarray = np.array(line.z + t*line.c)
+        x: np.ndarray = np.array(line.x + t*line.u)
+        y: np.ndarray = np.array(line.y + t*line.v)
+        z: np.ndarray = np.array(line.z + t*line.w)
 
         self._ax.plot(x, y, z, style, c=color)
 
-    def plot_plane(self, plane: Plane, center: Point, size: float = 0.2, alpha: float = 0.5) -> None:
+    def plot_plane(self, plane: Plane, center: Point = Point(0.0, 0.0, 0.0), size: float = 0.2, alpha: float = 0.5) -> None:
         linspace: np.ndarray = np.linspace(-size, size, 2)
         meshgrid: list[np.ndarray] = np.meshgrid(linspace, linspace)
 

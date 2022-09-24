@@ -3,10 +3,10 @@ from .vector import Vector
 
 
 class Line:
-    def __init__(self, a: float, b: float, c: float, x: float, y: float, z: float) -> None:
-        self.a: float = a
-        self.b: float = b
-        self.c: float = c
+    def __init__(self, u: float, v: float, w: float, x: float, y: float, z: float) -> None:
+        self.u: float = u
+        self.v: float = v
+        self.w: float = w
         self.x: float = x
         self.y: float = y
         self.z: float = z
@@ -19,11 +19,22 @@ class Line:
         vector: Vector = Vector(*(point_1-point_2))
         point: Point = (point_1+point_2)*0.5
 
-        a: float = vector.u
-        b: float = vector.v
-        c: float = vector.w
+        u: float = vector.u
+        v: float = vector.v
+        w: float = vector.w
         x: float = point.x
         y: float = point.y
         z: float = point.z
 
-        return Line(a, b, c, x, y, z)
+        return Line(u, v, w, x, y, z)
+
+    @staticmethod
+    def from_vector_and_point(vector: Vector, point: Point):
+        u: float = vector.u
+        v: float = vector.v
+        w: float = vector.w
+        x: float = point.x
+        y: float = point.y
+        z: float = point.z
+
+        return Line(u, v, w, x, y, z)

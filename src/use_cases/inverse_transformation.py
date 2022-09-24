@@ -1,6 +1,6 @@
 import numpy as np
 
-from ..entities import Axes, Point, Vector
+from ..entities import Axes, Point, Vector, Plane, Line
 
 
 class InverseTransformation:
@@ -33,3 +33,16 @@ class InverseTransformation:
         new_vector = Vector(*new_vector[:-1])
 
         return new_vector
+
+    @staticmethod
+    def get_projection(plane: Plane, line: Line, point: Point):
+        u: np.ndarray = np.array([line.u, line.v, line.w])
+        n: np.ndarray = np.array([plane.a, plane.b, plane.c])
+
+        projected_vector: np.ndarray = u - \
+            (u*n.T)/np.power(np.linalg.norm(n), 2)*n
+
+        line: Line = Line.from_vector_and_point(
+            Vector(*projected_vector), point)
+
+        return line
