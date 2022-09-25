@@ -12,7 +12,7 @@ class Line:
         self.z: float = z
 
     def __repr__(self) -> str:
-        return f'{self.__class__.__name__}(a: {self.a}, b: {self.b}, c: {self.c}, x: {self.x}, y: {self.y}, z: {self.z})'
+        return f'{self.__class__.__name__}(u: {self.u}, v: {self.v}, w: {self.w}, x: {self.x}, y: {self.y}, z: {self.z})'
 
     @staticmethod
     def from_two_points(point_1: Point, point_2: Point):

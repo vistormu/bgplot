@@ -1,4 +1,4 @@
-from ..entities import Point, Vector
+from ..entities import Point, Vector, Line
 
 
 class Plane:
@@ -19,3 +19,11 @@ class Plane:
         d: float = -vector.u*point.x - vector.v*point.y - vector.w*point.z
 
         return Plane(a, b, c, d)
+
+    @staticmethod
+    def from_three_points(point1: Point, point2: Point, point3: Point):
+        raise NotImplementedError()
+
+    @staticmethod
+    def from_line_and_point(line: Line, point: Point):
+        raise NotImplementedError()

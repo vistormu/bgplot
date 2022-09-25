@@ -75,7 +75,7 @@ class Graphics:
         v: list[float] = [vector.v for vector in vectors]
         w: list[float] = [vector.w for vector in vectors]
 
-        self._ax.quiver(z, y, z,
+        self._ax.quiver(x, y, z,
                         u, v, w,
                         length=length,
                         colors=color_dict[color])
@@ -136,7 +136,7 @@ class Graphics:
             case (1, 0, 1):
                 plane_x: np.ndarray = meshgrid[0] + center.x
                 plane_y: np.ndarray = meshgrid[1] + center.y
-                plane_z: np.ndarray = (-plane.d - plane.a*plane_x)/plane.b
+                plane_z: np.ndarray = (-plane.d - plane.a*plane_x)/plane.c
             case (1, 1, 0):
                 plane_x: np.ndarray = meshgrid[0] + center.x
                 plane_z: np.ndarray = meshgrid[1] + center.z

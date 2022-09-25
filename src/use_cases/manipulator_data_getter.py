@@ -30,21 +30,21 @@ class ManipulatorDataGetter:
 
     @staticmethod
     def get_x_vectors(transformation_matrices: list[np.ndarray]) -> list[Vector]:
-        x_vectors: list[Vector] = [Vector(*transformation_matrix[:3, 0])
+        x_vectors: list[Vector] = [Vector(*transformation_matrix[:3, 0]).normalize()
                                    for transformation_matrix in transformation_matrices]
 
         return x_vectors
 
     @staticmethod
     def get_y_vectors(transformation_matrices: list[np.ndarray]) -> list[Vector]:
-        y_vectors: list[Vector] = [Vector(*transformation_matrix[:3, 1])
+        y_vectors: list[Vector] = [Vector(*transformation_matrix[:3, 1]).normalize()
                                    for transformation_matrix in transformation_matrices]
 
         return y_vectors
 
     @staticmethod
     def get_z_vectors(transformation_matrices: list[np.ndarray]) -> list[Vector]:
-        z_vectors: list[Vector] = [Vector(*transformation_matrix[:3, 2])
+        z_vectors: list[Vector] = [Vector(*transformation_matrix[:3, 2]).normalize()
                                    for transformation_matrix in transformation_matrices]
 
         return z_vectors

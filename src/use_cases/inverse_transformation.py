@@ -1,6 +1,6 @@
 import numpy as np
 
-from ..entities import Axes, Point, Vector, Plane, Line
+from ..entities import Axes, Point, Vector, Plane, Line, ManipulatorData
 
 
 class InverseTransformation:
@@ -46,3 +46,47 @@ class InverseTransformation:
             Vector(*projected_vector), point)
 
         return line
+
+    @staticmethod
+    def get_transformations(a: list[float], d: list[float], alpha: list[float]):
+        length: int = len(a)
+        a_reversed: list[float] = list(reversed(a))
+        d_reversed: list[float] = list(reversed(d))
+        alpha_reversed: list[float] = list(reversed(alpha))
+
+        z_axis_list: list[Vector] = []
+        position_list: list[Point] = []
+
+        for i in range(length):
+            z_axis: np.ndarray = np.array([0,
+                                           np.sin(alpha_reversed[i]),
+                                           np.cos(alpha_reversed[i]),
+                                           0]).round(4)
+
+            position: np.ndarray = np.array([-a_reversed[i],
+                                             -d_reversed[i] *
+                                             np.sin(alpha_reversed[i]),
+                                             -d_reversed[i] *
+                                             np.cos(alpha_reversed[i]),
+                                             1]).round(4)
+
+            z_axis_list.append(z_axis)
+            position_list.append(position)
+
+        return z_axis_list, position_list
+
+    @staticmethod
+    def get_minimum_angle_vector(line: Line, vector: Vector):
+        line_vector_1: np.ndarray = np.array([line.u, line.v, line.w])
+        line_vector_2: np.ndarray = np.array([-line.u, -line.v, -line.w])
+        z_axis: np.ndarray = np.array(vector)
+
+        angle_1: float = np.arccos(np.dot(
+            line_vector_1, z_axis)/(np.linalg.norm(line_vector_1)*np.linalg.norm(z_axis)))
+        angle_2: float = np.arccos(np.dot(
+            line_vector_2, z_axis)/(np.linalg.norm(line_vector_2)*np.linalg.norm(z_axis)))
+
+        if angle_1 < angle_2:
+            return Vector(*line_vector_1).normalize()
+        else:
+            return Vector(*line_vector_2).normalize()
