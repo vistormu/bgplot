@@ -6,8 +6,13 @@ from ..entities import Point, Vector, Plane, Line, Axes
 
 
 class Graphics:
-    def __init__(self) -> None:
-        self._ax = plt.figure().add_subplot(111, projection='3d')
+    def __init__(self, size: int = 200) -> None:
+        self.size: int = size  # TMP
+        figure = plt.figure(dpi=size)
+        self._ax = figure.add_subplot(111, projection='3d')
+
+    def set_title(self, title: str):
+        self._ax.set_title(title)
 
     def show(self) -> None:
         plt.show()
@@ -22,9 +27,10 @@ class Graphics:
         plt.close()
 
     def clear(self) -> None:
-        # self._ax.clear()
+        self._ax.clear()
         plt.close()
-        self._ax = plt.figure().add_subplot(111, projection='3d')
+        figure = plt.figure(dpi=self.size)
+        self._ax = figure.add_subplot(111, projection='3d')
         self.set_limits(self.xlim, self.ylim, self.zlim)
 
     def set_limits(self, xlim: tuple[float], ylim: tuple[float], zlim: tuple[float]) -> None:
@@ -50,7 +56,7 @@ class Graphics:
         self._ax.scatter(*point, c=color)
         self.plot_axes(axes, point, length=length)
 
-    def plot_vector(self, vector: Vector, position: Point, length: float = 0.025, color: str = 'b') -> None:
+    def plot_vector(self, vector: Vector, position: Point = Point(0.0, 0.0, 0.0), length: float = 0.025, color: str = 'b') -> None:
         color_dict: dict = {'r': (1.0, 0.0, 0.0),
                             'g': (0.0, 1.0, 0.0),
                             'b': (0.0, 0.0, 1.0),

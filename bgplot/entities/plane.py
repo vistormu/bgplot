@@ -27,3 +27,7 @@ class Plane:
     @staticmethod
     def from_line_and_point(line: Line, point: Point):
         raise NotImplementedError()
+
+    @staticmethod
+    def from_two_vectors(vector_1: Vector, vector_2: Vector):
+        raise NotImplementedError()
