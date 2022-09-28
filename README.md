@@ -19,3 +19,5 @@ Basic Geometry Plotter (bgplot) is a simple python library used for fast and qui
 ## Geometric operations
 
 ### Vector projection
+
+## Plotting

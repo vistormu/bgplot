@@ -26,3 +26,6 @@ __pycache__/
 # PyCharm project files
 .idea
 vizdoom.ini
+
+TODO.md
+steps.md
