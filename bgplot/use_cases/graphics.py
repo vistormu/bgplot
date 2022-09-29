@@ -33,10 +33,16 @@ class Graphics:
         self._ax = figure.add_subplot(111, projection='3d')
         self.set_limits(self.xlim, self.ylim, self.zlim)
 
-    def set_limits(self, xlim: tuple[float], ylim: tuple[float], zlim: tuple[float]) -> None:
+    def set_limits(self, xlim: tuple[float], ylim: tuple[float], zlim: tuple[float], lock_aspect_ratio: bool = True) -> None:
         self._ax.set_xlim(*xlim)
         self._ax.set_ylim(*ylim)
         self._ax.set_zlim(*zlim)
+
+        if lock_aspect_ratio:
+            ratio: float = xlim[1]-xlim[0]
+            self._ax.set_box_aspect(aspect=(1.0,
+                                            (ylim[1]-ylim[0])/ratio,
+                                            (zlim[1]-zlim[0])/ratio))
 
         self.xlim = xlim  # TMP
         self.ylim = ylim

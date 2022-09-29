@@ -25,14 +25,14 @@ def project_line_on_plane(line: Line, plane: Plane) -> Line:
     return projected_line
 
 
-def get_angle_of_two_vectors(vector_1: Vector, vector_2: Vector) -> float:
-    u: np.ndarray = np.array(vector_1)
-    v: np.ndarray = np.array(vector_2)
+def get_angle_of_two_vectors(vector_1: Vector, vector_2: Vector, radians: bool = True) -> float:
+    angle: float = np.arctan2(vector_1.v, vector_1.u) - \
+        np.arctan2(vector_2.v, vector_2.u)
 
-    angle: float = np.arccos(
-        np.dot(u, v)/(np.linalg.norm(u)*np.linalg.norm(v)))
+    if angle < 0:
+        angle += 2*np.pi
 
-    return angle
+    return angle if radians else angle*180/np.pi
 
 
 def get_intersection_of_line_and_plane(line: Line, plane: Plane) -> Point:

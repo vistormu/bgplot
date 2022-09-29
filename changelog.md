@@ -1,3 +1,7 @@
+# 0.04
+- Added lock aspect ratio by default for figures
+- Changed angle between two vectors using atan2
+
 # 0.03
 - Implemented logger class
 - Added get_intersection_of_line_and_plane function
