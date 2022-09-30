@@ -2,20 +2,43 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-from ..entities import Point, Vector, Plane, Line, Axes
+from ...entities import Point, Vector, Plane, Line, Axes
+from .use_cases import point_plotting
 
 
 class Graphics:
     def __init__(self, size: int = 200) -> None:
-        self.size: int = size  # TMP
-        figure = plt.figure(dpi=size)
+        self.size: int = size
+        self.init()
+
+    def init(self):
+        # Figure variables
+        self.title: str = ''
+        self.limits_set: bool = False
+        self.lock_aspect_ratio: bool = True
+        self.x_limits: tuple[float] = None
+        self.y_limits: tuple[float] = None
+        self.z_limits: tuple[float] = None
+
+        # Figure
+        figure = plt.figure(dpi=self.size)
         self._ax = figure.add_subplot(111, projection='3d')
 
+        # Methods
+        self.set_title(self.title)
+        if self.limits_set:
+            self.set_limits(self.x_limits,
+                            self.y_limits,
+                            self.z_limits,
+                            self.lock_aspect_ratio)
+
     def set_title(self, title: str):
+        self.title = title
         self._ax.set_title(title)
 
     def show(self) -> None:
         plt.show()
+        self.clear()
 
     def update(self, fps: int) -> None:
         plt.ion()
@@ -29,38 +52,85 @@ class Graphics:
     def clear(self) -> None:
         self._ax.clear()
         plt.close()
-        figure = plt.figure(dpi=self.size)
-        self._ax = figure.add_subplot(111, projection='3d')
-        self.set_limits(self.xlim, self.ylim, self.zlim)
+        self.init()
 
     def set_limits(self, xlim: tuple[float], ylim: tuple[float], zlim: tuple[float], lock_aspect_ratio: bool = True) -> None:
+        self.x_limits = xlim
+        self.y_limits = ylim
+        self.z_limits = zlim
+
+        self.lock_aspect_ratio = lock_aspect_ratio
+
+        # Set limits
         self._ax.set_xlim(*xlim)
         self._ax.set_ylim(*ylim)
         self._ax.set_zlim(*zlim)
 
-        if lock_aspect_ratio:
+        # Set aspect ratio
+        if self.lock_aspect_ratio:
             ratio: float = xlim[1]-xlim[0]
             self._ax.set_box_aspect(aspect=(1.0,
                                             (ylim[1]-ylim[0])/ratio,
                                             (zlim[1]-zlim[0])/ratio))
 
-        self.xlim = xlim  # TMP
-        self.ylim = ylim
-        self.zlim = zlim
+    # ==========
+    # POINTS
+    # ==========
+    def add_point(self, point: Point, color: str = 'k') -> None:
+        """
+        Description
+
+        Parameters
+        ----------
+        arg1 : type
+            description
+
+        See Also
+        --------
+        function : description
+        """
+        point_plotting.add_point(self._ax, point, color)
 
     def add_points(self, points: list[Point], style: str = 'o', color: str = 'k') -> None:
-        x: list[float] = [point.x for point in points]
-        y: list[float] = [point.y for point in points]
-        z: list[float] = [point.z for point in points]
+        """
+        Description
 
-        self._ax.plot(x, y, z, style, c=color)
+        Parameters
+        ----------
+        arg1 : type
+            description
 
-    def add_point(self, point: Point, color: str = 'r') -> None:
-        self._ax.scatter(*point, c=color)
+        See Also
+        --------
+        function : description
+        """
+        point_plotting.add_points(self._ax, points, style, color)
 
-    def add_oriented_point(self, point: Point, axes: Axes, length: float = 0.025, color: str = 'r') -> None:
+    def add_oriented_point(self, point: Point, axes: Axes, length: float = 0.025, color: str = 'k') -> None:
         self._ax.scatter(*point, c=color)
         self.add_axes(axes, point, length=length)
+
+    def add_oriented_points(self, points: list[Point], axes_list: list[Axes], style: str = 'o', length: float = 0.025, color: str = 'k') -> None:
+        """
+        Description
+
+        Parameters
+        ----------
+        arg1 : type
+            description
+
+        See Also
+        --------
+        function : description
+        """
+        assert len(points) == len(axes_list)
+
+        point_plotting.add_oriented_points(
+            self._ax, points, axes_list, style, length, color)
+
+    # ==========
+    # VECTORS
+    # ==========
 
     def add_vector(self, vector: Vector, position: Point = Point(0.0, 0.0, 0.0), length: float = 0.025, color: str = 'b') -> None:
         color_dict: dict = {'r': (1.0, 0.0, 0.0),
