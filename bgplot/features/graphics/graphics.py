@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 from ...entities import Point, Vector, Plane, Line, Axes
-from .use_cases import point_plotting
+from .use_cases import point_plotting, vector_plotting, axes_plotting, line_plotting, plane_plotting
 
 
 class Graphics:
@@ -13,7 +13,7 @@ class Graphics:
 
     def init(self):
         # Figure variables
-        self.title: str = ''
+        self._title: str = ''
         self.limits_set: bool = False
         self.lock_aspect_ratio: bool = True
         self.x_limits: tuple[float] = None
@@ -25,7 +25,7 @@ class Graphics:
         self._ax = figure.add_subplot(111, projection='3d')
 
         # Methods
-        self.set_title(self.title)
+        self.set_title(self._title)
         if self.limits_set:
             self.set_limits(self.x_limits,
                             self.y_limits,
@@ -33,7 +33,7 @@ class Graphics:
                             self.lock_aspect_ratio)
 
     def set_title(self, title: str):
-        self.title = title
+        self._title = title
         self._ax.set_title(title)
 
     def show(self) -> None:
@@ -107,8 +107,19 @@ class Graphics:
         point_plotting.add_points(self._ax, points, style, color)
 
     def add_oriented_point(self, point: Point, axes: Axes, length: float = 0.025, color: str = 'k') -> None:
-        self._ax.scatter(*point, c=color)
-        self.add_axes(axes, point, length=length)
+        """
+        Description
+
+        Parameters
+        ----------
+        arg1 : type
+            description
+
+        See Also
+        --------
+        function : description
+        """
+        point_plotting.add_oriented_point(self._ax, point, axes, length, color)
 
     def add_oriented_points(self, points: list[Point], axes_list: list[Axes], style: str = 'o', length: float = 0.025, color: str = 'k') -> None:
         """
@@ -131,102 +142,139 @@ class Graphics:
     # ==========
     # VECTORS
     # ==========
+    def add_vector(self, vector: Vector, position: Point = Point(0.0, 0.0, 0.0), length: float = 0.025, color: str = 'k') -> None:
+        """
+        Description
 
-    def add_vector(self, vector: Vector, position: Point = Point(0.0, 0.0, 0.0), length: float = 0.025, color: str = 'b') -> None:
-        color_dict: dict = {'r': (1.0, 0.0, 0.0),
-                            'g': (0.0, 1.0, 0.0),
-                            'b': (0.0, 0.0, 1.0),
-                            'k': (0.0, 0.0, 0.0)}
+        Parameters
+        ----------
+        arg1 : type
+            description
 
-        self._ax.quiver(position.x, position.y, position.z,
-                        vector.u, vector.v, vector.w,
-                        length=length,
-                        colors=color_dict[color])
+        See Also
+        --------
+        function : description
+        """
 
-    def add_vectors(self, vectors: list[Vector], positions: list[Point], length: float = 0.025, color: str = 'b') -> None:
-        color_dict: dict = {'r': (1.0, 0.0, 0.0),
-                            'g': (0.0, 1.0, 0.0),
-                            'b': (0.0, 0.0, 1.0),
-                            'k': (0.0, 0.0, 0.0)}
+        vector_plotting.add_vector(self._ax, vector, position, length, color)
 
-        x: list[float] = [position.x for position in positions]
-        y: list[float] = [position.y for position in positions]
-        z: list[float] = [position.z for position in positions]
+    def add_vectors(self, vectors: list[Vector], positions: list[Point], length: float = 0.025, color: str = 'k') -> None:
+        """
+        Description
 
-        u: list[float] = [vector.u for vector in vectors]
-        v: list[float] = [vector.v for vector in vectors]
-        w: list[float] = [vector.w for vector in vectors]
+        Parameters
+        ----------
+        arg1 : type
+            description
 
-        self._ax.quiver(x, y, z,
-                        u, v, w,
-                        length=length,
-                        colors=color_dict[color])
+        See Also
+        --------
+        function : description
+        """
+        assert len(vectors) == len(positions)
 
-    def add_axes(self, axes: Axes, position: Point, length: float = 0.025) -> None:
-        self._ax.quiver(position.x, position.y, position.z,
-                        axes.x.u, axes.x.v, axes.x.w,
-                        length=length,
-                        colors=(1.0, 0.0, 0.0))
+        vector_plotting.add_vectors(
+            self._ax, vectors, positions, length, color)
 
-        self._ax.quiver(position.x, position.y, position.z,
-                        axes.y.u, axes.y.v, axes.y.w,
-                        length=length,
-                        colors=(0.0, 1.0, 0.0))
+    # ==========
+    # AXES
+    # ==========
+    def add_axes(self, axes: Axes, position: Point = Point(0.0, 0.0, 0.0), length: float = 0.025) -> None:
+        """
+        Description
 
-        self._ax.quiver(position.x, position.y, position.z,
-                        axes.z.u, axes.z.v, axes.z.w,
-                        length=length,
-                        colors=(0.0, 0.0, 1.0))
+        Parameters
+        ----------
+        arg1 : type
+            description
+
+        See Also
+        --------
+        function : description
+        """
+        axes_plotting.add_axes(self._ax, axes, position, length)
 
     def add_multiple_axes(self, axes_list: list[Axes], positions: list[Point], length: float = 0.05) -> None:
-        for axes, position in zip(axes_list, positions):
-            self.add_axes(axes, position, length=length)
+        """
+        Description
 
+        Parameters
+        ----------
+        arg1 : type
+            description
+
+        See Also
+        --------
+        function : description
+        """
+        assert len(axes_list) == len(positions)
+
+        axes_plotting.add_multiple_axes(self._ax, axes_list, positions, length)
+
+    # ==========
+    # LINES
+    # ==========
     def add_line(self, line: Line, line_range: tuple[float] = (-2.0, 2.0), style: str = '-', color: str = 'k') -> None:
-        t: np.ndarray = np.linspace(*line_range)
-        x: np.ndarray = np.array(line.x + t*line.u)
-        y: np.ndarray = np.array(line.y + t*line.v)
-        z: np.ndarray = np.array(line.z + t*line.w)
+        """
+        Description
 
-        self._ax.plot(x, y, z, style, c=color)
+        Parameters
+        ----------
+        arg1 : type
+            description
 
+        See Also
+        --------
+        function : description
+        """
+        line_plotting.add_line(self._ax, line, line_range, style, color)
+
+    def add_lines(self, lines: list[Line], line_range: tuple[float] = (-2.0, 2.0), style: str = '-', color: str = 'k') -> None:
+        """
+        Description
+
+        Parameters
+        ----------
+        arg1 : type
+            description
+
+        See Also
+        --------
+        function : description
+        """
+        line_plotting.add_lines(self._ax, lines, line_range, style, color)
+
+    # ==========
+    # PLANES
+    # ==========
     def add_plane(self, plane: Plane, center: Point = Point(0.0, 0.0, 0.0), size: float = 0.2, alpha: float = 0.5) -> None:
-        linspace: np.ndarray = np.linspace(-size, size, 2)
-        meshgrid: list[np.ndarray] = np.meshgrid(linspace, linspace)
+        """
+        Description
 
-        non_zero_vector: tuple(int) = (0 if abs(plane.a) < 0.01 else 1,
-                                       0 if abs(plane.b) < 0.01 else 1,
-                                       0 if abs(plane.c) < 0.01 else 1)
+        Parameters
+        ----------
+        arg1 : type
+            description
 
-        match(non_zero_vector):
-            case (0, 0, 1):
-                plane_x: np.ndarray = meshgrid[0] + center.x
-                plane_y: np.ndarray = meshgrid[1] + center.y
-                plane_z: np.ndarray = np.zeros_like(plane_x) - plane.d
-            case (0, 1, 0):
-                plane_x: np.ndarray = meshgrid[0] + center.x
-                plane_z: np.ndarray = meshgrid[1] + center.z
-                plane_y: np.ndarray = np.zeros_like(plane_x) - plane.d
-            case (0, 1, 1):
-                plane_x: np.ndarray = meshgrid[0] + center.x
-                plane_z: np.ndarray = meshgrid[1] + center.z
-                plane_y: np.ndarray = (-plane.d - plane.c*plane_z)/plane.b
-            case (1, 0, 0):
-                plane_y: np.ndarray = meshgrid[0] + center.y
-                plane_z: np.ndarray = meshgrid[1] + center.z
-                plane_x: np.ndarray = np.zeros_like(plane_y) - plane.d
-            case (1, 0, 1):
-                plane_x: np.ndarray = meshgrid[0] + center.x
-                plane_y: np.ndarray = meshgrid[1] + center.y
-                plane_z: np.ndarray = (-plane.d - plane.a*plane_x)/plane.c
-            case (1, 1, 0):
-                plane_x: np.ndarray = meshgrid[0] + center.x
-                plane_z: np.ndarray = meshgrid[1] + center.z
-                plane_y: np.ndarray = (-plane.d - plane.a*plane_x)/plane.b
-            case (1, 1, 1):
-                plane_x: np.ndarray = meshgrid[0] + center.x
-                plane_y: np.ndarray = meshgrid[1] + center.y
-                plane_z: np.ndarray = (-plane.d - plane.a *
-                                       plane_x - plane.b*plane_y)/plane.c
+        See Also
+        --------
+        function : description
+        """
+        plane_plotting.add_plane(self._ax, plane, center, size, alpha)
 
-        self._ax.plot_surface(plane_x, plane_y, plane_z, alpha=alpha)
+    def add_planes(self, planes: list[Plane], centers: list[Point], size: float = 0.2, alpha: float = 0.5) -> None:
+        """
+        Description
+
+        Parameters
+        ----------
+        arg1 : type
+            description
+
+        See Also
+        --------
+        function : description
+        """
+        assert len(planes) == len(centers)
+
+        plane_plotting.add_planes(self._ax, planes, centers, size, alpha)

@@ -10,6 +10,12 @@ class Vector(NamedTuple):
     def __mul__(self, scalar):
         return Vector(self.u*scalar, self.v*scalar, self.w * scalar)
 
+    def __add__(self, other):
+        return Vector(self.u+other.u, self.v+other.v, self.w+other.w)
+
+    def __sub__(self, other):
+        return Vector(self.u-other.u, self.v-other.v, self.w-other.w)
+
     def normalize(self):
         length: float = np.linalg.norm(self)
         u: float = self.u / length

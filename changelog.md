@@ -8,6 +8,9 @@
 - Fixed bug where set_limits was a mandatory method to use
 - Added figures titles
 - Implemented add functions for plotting multiple oriented points, lines and planes
+- Added some default positions for some add functions
+- Implemented unfinished constructors for plane entity
+- Added vector addition and subtraction methods
 
 # 0.03
 - Implemented logger class

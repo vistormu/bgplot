@@ -35,21 +35,29 @@ def add_oriented_points(figure: mplAxes, points: list[Point], axes_list: list[Ax
     x: list[float] = [point.x for point in points]
     y: list[float] = [point.y for point in points]
     z: list[float] = [point.z for point in points]
-    # u: list
+    u_x: list[float] = [axes.x.u for axes in axes_list]
+    v_x: list[float] = [axes.x.v for axes in axes_list]
+    w_x: list[float] = [axes.x.w for axes in axes_list]
+    u_y: list[float] = [axes.y.u for axes in axes_list]
+    v_y: list[float] = [axes.y.v for axes in axes_list]
+    w_y: list[float] = [axes.y.w for axes in axes_list]
+    u_z: list[float] = [axes.z.u for axes in axes_list]
+    v_z: list[float] = [axes.z.v for axes in axes_list]
+    w_z: list[float] = [axes.z.w for axes in axes_list]
 
-    # figure.plot(x, y, z, style, c=color)
+    figure.plot(x, y, z, style, c=color)
 
-    # figure.quiver(x, y, z,
-    #               *axes.x,
-    #               length=length,
-    #               colors=(1.0, 0.0, 0.0))
+    figure.quiver(x, y, z,
+                  u_x, v_x, w_x,
+                  length=length,
+                  colors=(1.0, 0.0, 0.0))
 
-    # figure.quiver(x, y, z,
-    #               *axes.y,
-    #               length=length,
-    #               colors=(0.0, 1.0, 0.0))
+    figure.quiver(x, y, z,
+                  u_y, v_y, w_y,
+                  length=length,
+                  colors=(0.0, 1.0, 0.0))
 
-    # figure.quiver(x, y, z,
-    #               *axes.z,
-    #               length=length,
-    #               colors=(0.0, 0.0, 1.0))
+    figure.quiver(x, y, z,
+                  u_z, v_z, w_z,
+                  length=length,
+                  colors=(0.0, 0.0, 1.0))
