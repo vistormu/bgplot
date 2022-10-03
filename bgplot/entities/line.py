@@ -3,6 +3,30 @@ from .vector import Vector
 
 
 class Line:
+    """
+    a class that contains the information of a 3D Line: (x, y, z) + t(u, v, w)
+
+    Attributes
+    ----------
+    u : float
+        the u value of the director vector of the line
+
+    v : float
+        the v value of the director vector of the line
+
+    w : float
+        the w value of the director vector of the line
+
+    x: float
+         the x value of the point contained in the line
+
+    y: float
+         the y value of the point contained in the line
+
+    z: float
+         the z value of the point contained in the line
+    """
+
     def __init__(self, u: float, v: float, w: float, x: float, y: float, z: float) -> None:
         self.u: float = u
         self.v: float = v
@@ -16,6 +40,22 @@ class Line:
 
     @staticmethod
     def from_two_points(point_1: Point, point_2: Point):
+        """
+        creates a Line instance given two points
+
+        Arguments
+        ---------
+        point_1 : ~.entities.point.Point
+            the first point
+
+        point_2 : ~.entities.point.Point
+            the second point
+
+        Returns
+        -------
+        out : ~.entities.line.Line
+            the line given by two points
+        """
         vector: Vector = Vector(*(point_1-point_2))
         point: Point = (point_1+point_2)*0.5
 

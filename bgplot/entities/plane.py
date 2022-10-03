@@ -15,6 +15,9 @@ class Plane:
 
     @staticmethod
     def from_normal_vector(vector: Vector, point: Point):
+        if vector == Vector(0.0, 0.0, 0.0):
+            raise ValueError('cannot instantiate plane with null vector')
+
         a: float = vector.u
         b: float = vector.v
         c: float = vector.w
@@ -53,6 +56,9 @@ class Plane:
 
     @staticmethod
     def from_two_vectors(vector_1: Vector, vector_2: Vector, point: Point):
+        if vector_1 == Vector(0.0, 0.0, 0.0) or vector_2 == Vector(0.0, 0.0, 0.0):
+            raise ValueError('cannot instantiate plane with null vector')
+
         normal_vector = Vector(*np.cross(vector_1, vector_2)).normalize()
 
         a: float = normal_vector.u

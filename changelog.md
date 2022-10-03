@@ -1,4 +1,13 @@
-# 0.04
+# 0.0.5
+- Added test code on operations module
+- Documented all functions and classes
+- Fixed a bug where the aspect ratio did not work for all figures
+- Instantiating a plane with a null vector is now a localized error
+- Added logger to the public API
+- Added the option to return degrees instead of radians in the get angle function
+- Added more default values to add functions
+
+# 0.0.4
 - Added lock aspect ratio by default for figures
 - Changed angle between two vectors using atan2
 - Changed API to be more modular
@@ -10,9 +19,9 @@
 - Implemented add functions for plotting multiple oriented points, lines and planes
 - Added some default positions for some add functions
 - Implemented unfinished constructors for plane entity
-- Added vector addition and subtraction methods
+- Added vector addition and subtraction overrides
 
-# 0.03
+# 0.0.3
 - Implemented logger class
 - Added get_intersection_of_line_and_plane function
 - Fixed line projection on plane
