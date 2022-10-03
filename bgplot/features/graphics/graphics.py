@@ -12,17 +12,16 @@ class Graphics:
 
     def __init__(self, size: int = 200) -> None:
         self.size: int = size
-        self._init()
-
-    def _init(self) -> None:
-        # Figure variables
-        self._title: str = ''
         self.limits_set: bool = False
         self.lock_aspect_ratio: bool = True
+        # Figure variables
+        self._title: str = ''
         self.x_limits: tuple[float] = None
         self.y_limits: tuple[float] = None
         self.z_limits: tuple[float] = None
+        self._init()
 
+    def _init(self) -> None:
         # Figure
         figure = plt.figure(dpi=self.size)
         self._ax = figure.add_subplot(111, projection='3d')

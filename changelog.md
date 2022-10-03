@@ -1,7 +1,9 @@
+# 0.0.6
+- Fixed a bug where the aspect ratio did not work for all figures
+
 # 0.0.5
 - Added test code on operations module
 - Documented all functions and classes
-- Fixed a bug where the aspect ratio did not work for all figures
 - Instantiating a plane with a null vector is now a localized error
 - Added logger to the public API
 - Added the option to return degrees instead of radians in the get angle function
