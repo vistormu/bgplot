@@ -70,6 +70,22 @@ class Line:
 
     @staticmethod
     def from_vector_and_point(vector: Vector, point: Point):
+        """
+        creates a Line instance given a director vector and a point
+
+        Arguments
+        ---------
+        vector : ~.entities.vector.Vector
+            the director vector of the line
+
+        point : ~.entities.point.Point
+            a point contained in the line
+
+        Returns
+        -------
+        out : ~.entities.line.Line
+            the line given by the director vector and the point
+        """
         u: float = vector.u
         v: float = vector.v
         w: float = vector.w

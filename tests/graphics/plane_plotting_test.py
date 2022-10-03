@@ -16,9 +16,9 @@ normal_vector = Vector(*np.cross(vector_1, vector_2)).normalize()
 line: Line = Line.from_two_points(point_2, point_3)
 
 plane_1: Plane = Plane.from_line_and_point(line, point_1)
-plane_2: Plane = Plane.from_normal_vector(normal_vector, point_1)
+plane_2: Plane = Plane.from_normal_vector_and_point(normal_vector, point_1)
 plane_3: Plane = Plane.from_three_points(point_1, point_2, point_3)
-plane_4: Plane = Plane.from_two_vectors(vector_1, vector_2, point_1)
+plane_4: Plane = Plane.from_two_vectors_and_point(vector_1, vector_2, point_1)
 
 graphics.add_plane(plane_1)
 graphics.add_plane(plane_2)

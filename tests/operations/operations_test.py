@@ -5,7 +5,7 @@ graphics: bgp.Graphics = bgp.Graphics()
 
 # project vector on plane
 vector: Vector = Vector(1.0, 1.0, 1.0)
-plane: Plane = Plane.from_normal_vector(
+plane: Plane = Plane.from_normal_vector_and_point(
     Vector(0.0, 0.0, 1.0), Point(0.0, 0.0, 0.0))
 
 vector_projected = bgp.op.project_vector_on_plane(vector, plane)
