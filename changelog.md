@@ -1,3 +1,8 @@
+# 0.0.7
+- Fixed a big where the update method didn't maintain the aspect ratio
+- Added a set view method where the view of the figure can be changed
+- Added more operations use cases for future implementations
+
 # 0.0.6
 - Fixed a bug where the aspect ratio did not work for all figures
 

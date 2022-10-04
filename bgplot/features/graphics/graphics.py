@@ -13,20 +13,32 @@ class Graphics:
     def __init__(self, size: int = 200) -> None:
         self.size: int = size
         self.limits_set: bool = False
+        self.view_set: bool = False
+        self.azimut: float = 0.0
+        self.elevation: float = 0.0
         self.lock_aspect_ratio: bool = True
-        # Figure variables
         self._title: str = ''
         self.x_limits: tuple[float] = None
         self.y_limits: tuple[float] = None
         self.z_limits: tuple[float] = None
-        self._init()
+        self._recreate_figure()
 
-    def _init(self) -> None:
-        # Figure
+    def _recreate_figure(self) -> None:
         figure = plt.figure(dpi=self.size)
         self._ax = figure.add_subplot(111, projection='3d')
 
-        # Methods
+    def _reset_methods(self) -> None:
+        self.set_title(self._title)
+        if self.limits_set:
+            self.set_limits(self.x_limits,
+                            self.y_limits,
+                            self.z_limits,
+                            self.lock_aspect_ratio)
+
+        if self.view_set:
+            self.set_view(self.azimut, self.elevation)
+
+    def _update_reset_methods(self) -> None:
         self.set_title(self._title)
         if self.limits_set:
             self.set_limits(self.x_limits,
@@ -78,6 +90,7 @@ class Graphics:
         plt.draw()
         plt.pause(1/fps)
         self._ax.cla()
+        self._update_reset_methods()
 
     def close(self) -> None:
         """
@@ -100,7 +113,8 @@ class Graphics:
         """
         self._ax.clear()
         plt.close()
-        self._init()
+        self._recreate_figure()
+        self._reset_methods()
 
     def set_limits(self, xlim: tuple[float], ylim: tuple[float], zlim: tuple[float], lock_aspect_ratio: bool = True) -> None:
         """
@@ -138,6 +152,24 @@ class Graphics:
             self._ax.set_box_aspect(aspect=(1.0,
                                             (ylim[1]-ylim[0])/ratio,
                                             (zlim[1]-zlim[0])/ratio))
+
+    def set_view(self, azimut: float, elevation: float) -> None:
+        """
+        sets the viewing angle given the azimut and the elevation
+
+        Arguments
+        ---------
+        azimut : float
+            the azimut angle
+
+        elevation : float
+            the elevation angle
+        """
+        self.view_set = True
+        self.azimut = azimut
+        self.elevation = elevation
+
+        self._ax.view_init(elev=elevation, azim=azimut)
 
     # ==========
     # POINTS

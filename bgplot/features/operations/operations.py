@@ -1,6 +1,7 @@
 import numpy as np
 
-from ..entities import Vector, Line, Point, Plane
+from ...entities import Vector, Line, Point, Plane
+from .use_cases import projections, angles, intersections, distances
 
 
 def project_vector_on_plane(vector: Vector, plane: Plane) -> Vector:
@@ -24,13 +25,7 @@ def project_vector_on_plane(vector: Vector, plane: Plane) -> Vector:
     --------
     project_line_on_plane : returns the projected line on a given plane
     """
-    u: np.ndarray = np.array(vector)
-    n: np.ndarray = np.array([plane.a, plane.b, plane.c])
-    v: np.ndarray = u - np.dot(u, n)/np.power(np.linalg.norm(n), 2)*n
-
-    v_vector: Vector = Vector(*v)
-
-    return v_vector
+    return projections.project_vector_on_plane(vector, plane)
 
 
 def project_line_on_plane(line: Line, plane: Plane) -> Line:
@@ -54,14 +49,7 @@ def project_line_on_plane(line: Line, plane: Plane) -> Line:
     --------
     project_vector_on_plane : returns the projected vector on a given plane
     """
-    u: np.ndarray = np.array([line.u, line.v, line.w])
-    n: np.ndarray = np.array([plane.a, plane.b, plane.c])
-    v: np.ndarray = u - np.dot(u, n)/np.power(np.linalg.norm(n), 2)*n
-
-    point: Point = get_intersection_of_line_and_plane(line, plane)
-    projected_line: Line = Line.from_vector_and_point(Vector(*v), point)
-
-    return projected_line
+    return projections.project_line_on_plane(line, plane)
 
 
 def get_angle_of_two_vectors(vector_1: Vector, vector_2: Vector, normal_vector: Vector, degrees: bool = False) -> float:
@@ -89,19 +77,10 @@ def get_angle_of_two_vectors(vector_1: Vector, vector_2: Vector, normal_vector: 
 
     Notes
     -----
-    Note that depending on the direction of the normal vector, the returned angle could be angle or 2*pi-angle
+    Note that depending on the direction of the normal vector, the returned angle could be angle or pi+angle
 
     """
-    v1: np.ndarray = np.array(vector_1.normalize())
-    v2: np.ndarray = np.array(vector_2.normalize())
-    n: np.ndarray = np.array(normal_vector.normalize())
-
-    angle: float = np.arctan2(np.dot(np.cross(v2, v1), n), np.dot(v1, v2))
-
-    if angle < 0.0:
-        angle += 2.0*np.pi
-
-    return angle if not degrees else angle*180/np.pi
+    return angles.get_angle_of_two_vectors(vector_1, vector_2, normal_vector, degrees)
 
 
 def get_intersection_of_line_and_plane(line: Line, plane: Plane) -> Point:
@@ -127,17 +106,24 @@ def get_intersection_of_line_and_plane(line: Line, plane: Plane) -> Point:
         if the plane and the line are parallel to each other
 
     """
-    v: np.ndarray = np.array([line.u, line.v, line.w])
-    n: np.ndarray = np.array([plane.a, plane.b, plane.c])
-    line_point: np.ndarray = np.array([line.x, line.y, line.z])
+    return intersections.get_intersection_of_line_and_plane(line, plane)
 
-    dot_product: float = np.dot(n, v)
 
-    if abs(dot_product) < 0.01:
-        raise ValueError('the plane and the line are parallel to each other')
+def distance_between_two_points(point_1: Point, point_2: Point) -> float:
+    """
+    returns the distance between tow points in space
 
-    t: float = -(plane.d+np.dot(n, line_point))/dot_product
+    Parameters
+    ----------
+    point_1 : ~.entities.point.Point
+        the first point
 
-    intersection_point: Point = Point(*(line_point + v*t))
+    point_2 : ~.entities.point.Point
+        the second point
 
-    return intersection_point
+    Returns
+    -------
+    out : float
+        the distance between the two points
+    """
+    return distances.distance_between_two_points(point_1, point_2)

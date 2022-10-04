@@ -46,3 +46,11 @@ graphics.add_plane(plane)
 
 graphics.set_title('intersection')
 graphics.show()
+
+# Distance between two points
+point_1: Point = Point(0.0, 0.0, 0.0)
+point_2: Point = Point(-1.0, 0.0, 0.0)
+
+distance: float = bgp.op.distance_between_two_points(point_1, point_2)
+
+bgp.Logger.debug(distance)
