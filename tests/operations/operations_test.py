@@ -8,7 +8,7 @@ vector: Vector = Vector(1.0, 1.0, 1.0)
 plane: Plane = Plane.from_normal_vector_and_point(
     Vector(0.0, 0.0, 1.0), Point(0.0, 0.0, 0.0))
 
-vector_projected = bgp.op.project_vector_on_plane(vector, plane)
+vector_projected = bgp.ops.project_vector_on_plane(vector, plane)
 
 graphics.add_vector(vector)
 graphics.add_vector(vector_projected)
@@ -19,7 +19,7 @@ graphics.show()
 
 # project line on plane
 line: Line = Line.from_vector_and_point(vector, Point(0.0, 0.0, 0.0))
-line_projected: Line = bgp.op.project_line_on_plane(line, plane)
+line_projected: Line = bgp.ops.project_line_on_plane(line, plane)
 
 graphics.add_lines([line, line_projected], style='--', line_range=(-0.2, 0.2))
 graphics.add_plane(plane)
@@ -30,15 +30,15 @@ graphics.show()
 vector_1: Vector = Vector(1.0, 0.0, 0.0)
 vector_2: Vector = Vector(0.0, 0.0, 1.0)
 
-angle_1: float = bgp.op.get_angle_of_two_vectors(
+angle_1: float = bgp.ops.get_angle_of_two_vectors(
     vector_1, vector_2, Vector(0.0, 1.0, 0.0), degrees=True)
-angle_2: float = bgp.op.get_angle_of_two_vectors(
+angle_2: float = bgp.ops.get_angle_of_two_vectors(
     vector_1, vector_2, Vector(0.0, -1.0, 0.0), degrees=True)
 
 bgp.Logger.debug(angle_1, angle_2, sep=' ')
 
 # Intersection of line and plane
-intersection: Point = bgp.op.get_intersection_of_line_and_plane(line, plane)
+intersection: Point = bgp.ops.get_intersection_of_line_and_plane(line, plane)
 
 graphics.add_point(intersection, color='r')
 graphics.add_line(line, style='--', color='tab:gray', line_range=(-0.2, 0.2))
@@ -51,6 +51,6 @@ graphics.show()
 point_1: Point = Point(0.0, 0.0, 0.0)
 point_2: Point = Point(-1.0, 0.0, 0.0)
 
-distance: float = bgp.op.distance_between_two_points(point_1, point_2)
+distance: float = bgp.ops.distance_between_two_points(point_1, point_2)
 
 bgp.Logger.debug(distance)

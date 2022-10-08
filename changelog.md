@@ -1,3 +1,13 @@
+# 0.0.8
+- Implemented bgpColors for cuter representations
+- Changed the default line range value in the add line function
+- Changed the default length value of vectors
+- Implemented a new method that can disable plot settings as ticks, grid, background...
+- Changed module name from 'op' to 'ops'
+- Implemented background color change method
+- Changed the default colors to use the bgp ones
+- Added line width parameter to the add line functions
+
 # 0.0.7
 - Fixed a big where the update method didn't maintain the aspect ratio
 - Added a set view method where the view of the figure can be changed

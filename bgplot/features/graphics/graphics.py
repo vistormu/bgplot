@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 from ...entities import Point, Vector, Plane, Line, Axes
-from .use_cases import point_plotting, vector_plotting, axes_plotting, line_plotting, plane_plotting
+from .use_cases import point_plotting, vector_plotting, axes_plotting, line_plotting, plane_plotting, settings
+from .core.colors import Colors
 
 
 class Graphics:
@@ -21,6 +22,8 @@ class Graphics:
         self.x_limits: tuple[float] = None
         self.y_limits: tuple[float] = None
         self.z_limits: tuple[float] = None
+        self.disable_inputs: tuple[str] = ()
+        self.background: tuple[str, str] = ()
         self._recreate_figure()
 
     def _recreate_figure(self) -> None:
@@ -38,6 +41,12 @@ class Graphics:
         if self.view_set:
             self.set_view(self.azimut, self.elevation)
 
+        if self.disable_inputs:
+            self.disable(*self.disable_inputs)
+
+        if self.background:
+            self.set_background_color(*self.background)
+
     def _update_reset_methods(self) -> None:
         self.set_title(self._title)
         if self.limits_set:
@@ -45,6 +54,9 @@ class Graphics:
                             self.y_limits,
                             self.z_limits,
                             self.lock_aspect_ratio)
+
+        if self.disable_inputs:
+            self.disable(*self.disable_inputs)
 
     def set_title(self, title: str) -> None:
         """
@@ -111,8 +123,8 @@ class Graphics:
         --------
         function : description
         """
-        self._ax.clear()
-        plt.close()
+        # self._ax.clear()
+        # plt.close()
         self._recreate_figure()
         self._reset_methods()
 
@@ -171,10 +183,51 @@ class Graphics:
 
         self._ax.view_init(elev=elevation, azim=azimut)
 
+    def disable(self, *disable_inputs) -> None:
+        """
+        disables plot elements as grid, background, ticks, axes...
+
+        Parameters
+        ----------
+        disable_inputs : tuple[str]
+            possible values:
+                - 'ticks' for all ticks\\
+                - 'xticks' for xticks\\
+                - 'yticks' for yticks\\
+                - 'zticks' for zticks\\
+                - 'axes' for all axes\\
+                - 'xaxis' for the x axis\\
+                - 'yaxis' for the y axis\\
+                - 'zaxis' for the z axis\\
+                - 'grid' for the grid\\
+                - 'background' for the complete background\\
+                - 'walls' for the sides of the background\\
+                - 'floor' for the background floor\\
+        """
+        self.disable_inputs = disable_inputs
+        settings.disable_ticks(self._ax, disable_inputs)
+        settings.disable_axes(self._ax, disable_inputs)
+        settings.disable_grid(self._ax, disable_inputs)
+        settings.disable_background(self._ax, disable_inputs)
+
+    def set_background_color(self, color: str, part: str = '') -> None:
+        """
+        sets the background color
+
+        Parameters
+        ----------
+        color : str
+            the color of the background. Supports hex values but not matplotlib's standard codes
+        part : str, optional
+            the parts of the background to be colored. Use 'walls' for the walls and 'floor' for the floor
+        """
+        self.background = (color, part)
+        settings.set_background_color(self._ax, color, part)
+
     # ==========
     # POINTS
     # ==========
-    def add_point(self, point: Point, color: str = 'k') -> None:
+    def add_point(self, point: Point, color: str = Colors.black) -> None:
         """
         adds a point to be displayed
 
@@ -184,7 +237,7 @@ class Graphics:
             the point to be added
 
         color : str, optional
-            the color of the point. Uses the same notation as matplotlib's color code. 'k' (black) by default
+            the color of the point. Uses the same notation as matplotlib's color code. ~.Colors.black by default
 
         See Also
         --------
@@ -194,7 +247,7 @@ class Graphics:
         """
         point_plotting.add_point(self._ax, point, color)
 
-    def add_points(self, points: list[Point], style: str = 'o', color: str = 'k') -> None:
+    def add_points(self, points: list[Point], style: str = 'o', color: str = Colors.black) -> None:
         """
         adds multiple points to be displayed
 
@@ -207,7 +260,7 @@ class Graphics:
             the style of the line that joins the points. Uses the same notation as matplotlib's style code. 'o' by default
 
         color : str, optional
-            the color of the points. Uses the same notation as matplotlib's color code. 'k' (black) by default
+            the color of the points. Uses the same notation as matplotlib's color code. ~.Colors.black by default
 
         See Also
         --------
@@ -217,7 +270,7 @@ class Graphics:
         """
         point_plotting.add_points(self._ax, points, style, color)
 
-    def add_oriented_point(self, point: Point, axes: Axes, length: float = 0.025, color: str = 'k') -> None:
+    def add_oriented_point(self, point: Point, axes: Axes, length: float = 0.1, color: str = Colors.black) -> None:
         """
         adds a point with orientation to be displayed
 
@@ -230,10 +283,10 @@ class Graphics:
             the orientation of the point given by the axes
 
         length : float, optional
-            the length of the displayed axes. 0.025 by default
+            the length of the displayed axes. 0.1 by default
 
         color : str, optional
-            the color of the point. 'k' (black) by default
+            the color of the point. ~.Colors.black by default
 
         Notes
         -----
@@ -247,7 +300,7 @@ class Graphics:
         """
         point_plotting.add_oriented_point(self._ax, point, axes, length, color)
 
-    def add_oriented_points(self, points: list[Point], axes_list: list[Axes], style: str = 'o', length: float = 0.025, color: str = 'k') -> None:
+    def add_oriented_points(self, points: list[Point], axes_list: list[Axes], style: str = 'o', length: float = 0.1, color: str = Colors.black) -> None:
         """
         adds multiple points with orientation to be displayed
 
@@ -263,10 +316,10 @@ class Graphics:
             the line style of the connection of points. Follows the matplotlib's style code. 'o' by default
 
         length : float, optional
-            the length of the displayed axes. 0.025 by default
+            the length of the displayed axes. 0.1 by default
 
         color : str, optional
-            the color of the points. 'k' (black) by default
+            the color of the points. ~.Colors.black by default
 
         Raises
         ------
@@ -293,7 +346,7 @@ class Graphics:
     # ==========
     # VECTORS
     # ==========
-    def add_vector(self, vector: Vector, position: Point = Point(0.0, 0.0, 0.0), length: float = 0.025, color: str = 'k') -> None:
+    def add_vector(self, vector: Vector, position: Point = Point(0.0, 0.0, 0.0), length: float = 0.1, color: str = Colors.black) -> None:
         """
         add a vector to be displayed
 
@@ -306,11 +359,10 @@ class Graphics:
             the position of the vector. On the origin by default
 
         length : float, optional
-            the length of the displayed vector. 0.025 by default
+            the length of the displayed vector. 0.1 by default
 
         color : str, optional
-            the color of the plotted vector. 'k' black by default. Currently only supports 'k' (black), 'r' (red), 'g' (green) and 'b' (blue)
-
+            the color of the plotted vector. '~.Colors.black by default.
         Notes
         -----
         currently, the color of the vector does not support the matplotlib's color code due to the implementation
@@ -321,7 +373,7 @@ class Graphics:
         """
         vector_plotting.add_vector(self._ax, vector, position, length, color)
 
-    def add_vectors(self, vectors: list[Vector], positions: list[Point] = None, length: float = 0.025, color: str = 'k') -> None:
+    def add_vectors(self, vectors: list[Vector], positions: list[Point] = None, length: float = 0.1, color: str = Colors.black) -> None:
         """
         add multiple vectors to be displayed
 
@@ -334,10 +386,10 @@ class Graphics:
             list of positions of each vector. By default on the origin
 
         length : float, optional
-            the length of the displayed vectors. 0.025 by default
+            the length of the displayed vectors. 0.1 by default
 
         color : str, optional
-            the color of the plotted vector. 'k' black by default. Currently only supports 'k' (black), 'r' (red), 'g' (green) and 'b' (blue)
+            the color of the plotted vector. ~.Colors.black by default.
 
         Raises
         ------
@@ -365,7 +417,7 @@ class Graphics:
     # ==========
     # AXES
     # ==========
-    def add_axes(self, axes: Axes, position: Point = Point(0.0, 0.0, 0.0), length: float = 0.025) -> None:
+    def add_axes(self, axes: Axes, position: Point = Point(0.0, 0.0, 0.0), length: float = 0.1) -> None:
         """
         adds axes to be displayed
 
@@ -378,7 +430,7 @@ class Graphics:
             the position of the axes. By default on the origin
 
         length : float, optional
-            the length of the displayed axes. 0.025 by default
+            the length of the displayed axes. 0.1 by default
 
         See Also
         --------
@@ -386,7 +438,7 @@ class Graphics:
         """
         axes_plotting.add_axes(self._ax, axes, position, length)
 
-    def add_multiple_axes(self, axes_list: list[Axes], positions: list[Point] = None, length: float = 0.025) -> None:
+    def add_multiple_axes(self, axes_list: list[Axes], positions: list[Point] = None, length: float = 0.1) -> None:
         """
         adds multiple axes to be displayed
 
@@ -399,7 +451,7 @@ class Graphics:
             the positions of the axes. By default on the origin
 
         length : float, optional
-            the length of the plotted axes. 0.025 by default
+            the length of the plotted axes. 0.1 by default
 
         Raises
         ------
@@ -422,7 +474,7 @@ class Graphics:
     # ==========
     # LINES
     # ==========
-    def add_line(self, line: Line, line_range: tuple[float] = (-2.0, 2.0), style: str = '-', color: str = 'k') -> None:
+    def add_line(self, line: Line, line_range: tuple[float] = (-0.5, 0.5), style: str = '-', color: str = Colors.black, linewidth: float = 1.0) -> None:
         """
         adds a line to be displayed
 
@@ -432,21 +484,25 @@ class Graphics:
             the line to be displayed
 
         line_range : tuple[float], optional
-             the range of the line to be plotted. From -2.0 to 2.0 by default
+             the range of the line to be plotted. From -0.5 to 0.5 by default
 
         style : str, optional
             the style of the line. Follows the matplotlib's style code. '-' by default
 
         color : str, optional
-            the color of the displayed line. Follows the matplotlib's color code. 'k' (black) by default
+            the color of the displayed line. Follows the matplotlib's color code. ~.Colors.black by default
+
+        linewidth : float, optional
+            the width of the displayed line. 1.0 by default
 
         See Also
         --------
         add_lines : adds multiple lines to be displayed
         """
-        line_plotting.add_line(self._ax, line, line_range, style, color)
+        line_plotting.add_line(self._ax, line, line_range,
+                               style, color, linewidth)
 
-    def add_lines(self, lines: list[Line], line_range: tuple[float] = (-2.0, 2.0), style: str = '-', color: str = 'k') -> None:
+    def add_lines(self, lines: list[Line], line_range: tuple[float] = (-0.5, 0.5), style: str = '-', color: str = Colors.black, linewidth: float = 1.0) -> None:
         """
         adds multiple lines to be displayed
 
@@ -462,13 +518,17 @@ class Graphics:
             the style of the lines. Follows the matplotlib's style code. '-' by default
 
         color : str, optional
-            the color of the displayed lines. Follows the matplotlib's color code. 'k' (black) by default
+            the color of the displayed lines. Follows the matplotlib's color code. ~.Colors.black by default
+
+        linewidth : float, optional
+            the width of the displayed lines. 1.0 by default
 
         See Also
         --------
         add_line : adds line to be displayed
         """
-        line_plotting.add_lines(self._ax, lines, line_range, style, color)
+        line_plotting.add_lines(
+            self._ax, lines, line_range, style, color, linewidth)
 
     # ==========
     # PLANES
