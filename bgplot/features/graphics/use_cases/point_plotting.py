@@ -1,6 +1,6 @@
 from matplotlib.axes import Axes as mplAxes
 
-from ....entities import Point, Axes
+from ....entities import Point, Axes, OrientedPoint
 from ..core.colors import Colors
 
 # TMP
@@ -20,43 +20,58 @@ def add_point(figure: mplAxes, point: Point, color: str) -> None:
     figure.scatter(*point, c=color)
 
 
-def add_points(figure: mplAxes, points: list[Point], style: str, color: str) -> None:
+def add_points(figure: mplAxes, points: list[Point], style: str, color: str, linewidth: float) -> None:
     x: list[float] = [point.x for point in points]
     y: list[float] = [point.y for point in points]
     z: list[float] = [point.z for point in points]
 
-    figure.plot(x, y, z, style, c=color)
+    figure.plot(x, y, z, style, c=color, lw=linewidth)
 
 
-def add_oriented_point(figure: mplAxes, point: Point, axes: Axes, length: float, color: str) -> None:
-    figure.quiver(*point, *axes.x,
+def add_oriented_point(figure: mplAxes, oriented_point: OrientedPoint, length: float, color: str) -> None:
+    figure.quiver(*oriented_point.position,
+                  *oriented_point.axes.x,
                   length=length,
                   colors=_get_color(Colors.red))
 
-    figure.quiver(*point, *axes.y,
+    figure.quiver(*oriented_point.position,
+                  *oriented_point.axes.y,
                   length=length,
                   colors=_get_color(Colors.green))
 
-    figure.quiver(*point, *axes.z,
+    figure.quiver(*oriented_point.position,
+                  *oriented_point.axes.z,
                   length=length,
                   colors=_get_color(Colors.blue))
 
-    figure.scatter(*point, c=color)
+    figure.scatter(*oriented_point.position, c=color)
 
 
-def add_oriented_points(figure: mplAxes, points: list[Point], axes_list: list[Axes], style: str, length: float, color: str) -> None:
-    x: list[float] = [point.x for point in points]
-    y: list[float] = [point.y for point in points]
-    z: list[float] = [point.z for point in points]
-    u_x: list[float] = [axes.x.u for axes in axes_list]
-    v_x: list[float] = [axes.x.v for axes in axes_list]
-    w_x: list[float] = [axes.x.w for axes in axes_list]
-    u_y: list[float] = [axes.y.u for axes in axes_list]
-    v_y: list[float] = [axes.y.v for axes in axes_list]
-    w_y: list[float] = [axes.y.w for axes in axes_list]
-    u_z: list[float] = [axes.z.u for axes in axes_list]
-    v_z: list[float] = [axes.z.v for axes in axes_list]
-    w_z: list[float] = [axes.z.w for axes in axes_list]
+def add_oriented_points(figure: mplAxes, oriented_points: list[OrientedPoint], style: str, length: float, color: str, linewidth: float) -> None:
+    x: list[float] = [
+        oriented_point.position.x for oriented_point in oriented_points]
+    y: list[float] = [
+        oriented_point.position.y for oriented_point in oriented_points]
+    z: list[float] = [
+        oriented_point.position.z for oriented_point in oriented_points]
+    u_x: list[float] = [
+        oriented_point.axes.x.u for oriented_point in oriented_points]
+    v_x: list[float] = [
+        oriented_point.axes.x.v for oriented_point in oriented_points]
+    w_x: list[float] = [
+        oriented_point.axes.x.w for oriented_point in oriented_points]
+    u_y: list[float] = [
+        oriented_point.axes.y.u for oriented_point in oriented_points]
+    v_y: list[float] = [
+        oriented_point.axes.y.v for oriented_point in oriented_points]
+    w_y: list[float] = [
+        oriented_point.axes.y.w for oriented_point in oriented_points]
+    u_z: list[float] = [
+        oriented_point.axes.z.u for oriented_point in oriented_points]
+    v_z: list[float] = [
+        oriented_point.axes.z.v for oriented_point in oriented_points]
+    w_z: list[float] = [
+        oriented_point.axes.z.w for oriented_point in oriented_points]
 
     figure.quiver(x, y, z,
                   u_x, v_x, w_x,
@@ -73,4 +88,4 @@ def add_oriented_points(figure: mplAxes, points: list[Point], axes_list: list[Ax
                   length=length,
                   colors=_get_color(Colors.blue))
 
-    figure.plot(x, y, z, style, c=color)
+    figure.plot(x, y, z, style, c=color, lw=linewidth)

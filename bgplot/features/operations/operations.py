@@ -1,7 +1,7 @@
 import numpy as np
 
 from ...entities import Vector, Line, Point, Plane
-from .use_cases import projections, angles, intersections, distances
+from .use_cases import projections, angles, intersections, distances, rotations
 
 
 def project_vector_on_plane(vector: Vector, plane: Plane) -> Vector:

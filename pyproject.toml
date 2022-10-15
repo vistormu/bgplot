@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bgplot"
-version = "0.0.8"
+version = "0.0.9"
 authors = [
   { name="Vistor"},
 ]
@@ -18,7 +18,7 @@ classifiers = [
 ]
 dependencies = [
     "numpy",
-    "matplotlib",
+    "matplotlib==3.5.2",
 ]
 
 [project.urls]

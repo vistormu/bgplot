@@ -1,3 +1,12 @@
+# 0.0.9
+- Fixed matplotlib version to 3.5.2
+- Fixed a bug where using show after update did not work
+- Added linewidth argument for plotting multiple points
+- Added new entity: oriented point
+- Added an all import on bgplot entities
+- Changed the add oriented point methods to include the new oriented point entity
+- Added a brand new logo
+
 # 0.0.8
 - Implemented bgpColors for cuter representations
 - Changed the default line range value in the add line function

@@ -1,5 +1,5 @@
 import bgplot as bgp
-from bgplot.entities import Point, Axes, Vector
+from bgplot.entities import Point, Axes, Vector, OrientedPoint
 
 graphics: bgp.Graphics = bgp.Graphics()
 
@@ -37,9 +37,13 @@ axes_3: Axes = Axes(Vector(1.0, 1.0, 1.0),
                     Vector(1.0, 0.0, 0.0),
                     Vector(1.0, 0.0, -1.0))
 
-graphics.add_oriented_point(point_1, axes_1, color=bgp.Colors.red)
-graphics.add_oriented_point(point_2, axes_2, color=bgp.Colors.green)
-graphics.add_oriented_point(point_3, axes_3, color=bgp.Colors.blue)
+oriented_point_1: OrientedPoint = OrientedPoint(point_1, axes_1)
+oriented_point_2: OrientedPoint = OrientedPoint(point_2, axes_2)
+oriented_point_3: OrientedPoint = OrientedPoint(point_3, axes_3)
+
+graphics.add_oriented_point(oriented_point_1, color=bgp.Colors.red)
+graphics.add_oriented_point(oriented_point_2, color=bgp.Colors.green)
+graphics.add_oriented_point(oriented_point_3, color=bgp.Colors.blue)
 
 graphics.set_title('oriented point')
 graphics.show()
@@ -47,7 +51,7 @@ graphics.show()
 # Multiple oriented points
 
 graphics.set_title('oriented points')
-graphics.add_oriented_points([point_1, point_2, point_3], [
-                             axes_1, axes_2, axes_3], style='-o')
+graphics.add_oriented_points(
+    [oriented_point_1, oriented_point_2, oriented_point_3], style='.-', linewidth=0.2)
 graphics.set_background_color(bgp.Colors.white)
 graphics.show()

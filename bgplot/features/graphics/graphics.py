@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-from ...entities import Point, Vector, Plane, Line, Axes
+from ...entities import *
 from .use_cases import point_plotting, vector_plotting, axes_plotting, line_plotting, plane_plotting, settings
 from .core.colors import Colors
 
@@ -82,6 +82,7 @@ class Graphics:
         --------
         update : updates the figure for interactive plotting
         """
+        plt.ioff()
         plt.show()
         self.clear()
 
@@ -247,7 +248,7 @@ class Graphics:
         """
         point_plotting.add_point(self._ax, point, color)
 
-    def add_points(self, points: list[Point], style: str = 'o', color: str = Colors.black) -> None:
+    def add_points(self, points: list[Point], style: str = 'o', color: str = Colors.black, linewidth: float = 1.0) -> None:
         """
         adds multiple points to be displayed
 
@@ -262,25 +263,25 @@ class Graphics:
         color : str, optional
             the color of the points. Uses the same notation as matplotlib's color code. ~.Colors.black by default
 
+        linewidth : float, optional
+            the width of the displayed line. 1.0 by default
+
         See Also
         --------
         add_point : adds a point to be displayed
         add_oriented_point : adds a point with orientation to be displayed
         add_oriented_points : adds multiple points with orientation to be displayed
         """
-        point_plotting.add_points(self._ax, points, style, color)
+        point_plotting.add_points(self._ax, points, style, color, linewidth)
 
-    def add_oriented_point(self, point: Point, axes: Axes, length: float = 0.1, color: str = Colors.black) -> None:
+    def add_oriented_point(self, oriented_point: OrientedPoint, length: float = 0.1, color: str = Colors.black) -> None:
         """
         adds a point with orientation to be displayed
 
         Parameters
         ----------
-        point : ~.entities.point.Point
+        oriented_point : ~.entities.oriented_point.OrientedPoint
             the point to be added
-
-        axes : ~.entities.axes.Axes
-            the orientation of the point given by the axes
 
         length : float, optional
             the length of the displayed axes. 0.1 by default
@@ -298,19 +299,17 @@ class Graphics:
         add_points : adds multiple points to be displayed
         add_oriented_points : adds multiple points with orientation to be displayed
         """
-        point_plotting.add_oriented_point(self._ax, point, axes, length, color)
+        point_plotting.add_oriented_point(
+            self._ax, oriented_point, length, color)
 
-    def add_oriented_points(self, points: list[Point], axes_list: list[Axes], style: str = 'o', length: float = 0.1, color: str = Colors.black) -> None:
+    def add_oriented_points(self, oriented_points: list[OrientedPoint], style: str = 'o', length: float = 0.1, color: str = Colors.black, linewidth: float = 1.0) -> None:
         """
         adds multiple points with orientation to be displayed
 
         Parameters
         ----------
-        points : list[~.entities.point.Point]
-            the points to be added
-
-        axes_list : list[~.entities.axes.Axes]
-            the orientation of each point
+        oriented_points : list[~.entities.oriented_point.OrientedPoint]
+            the oriented points to be added
 
         style : str, optional
             the line style of the connection of points. Follows the matplotlib's style code. 'o' by default
@@ -321,10 +320,8 @@ class Graphics:
         color : str, optional
             the color of the points. ~.Colors.black by default
 
-        Raises
-        ------
-        IndexError
-            if the lengths of the point and axes list do not match
+        linewidth : float, optional
+            the width of the displayed line. 1.0 by default
 
         Notes
         -----
@@ -336,12 +333,8 @@ class Graphics:
         add_points : adds multiple points to be displayed
         add_oriented_point : adds a point with orientation to be displayed
         """
-        if len(points) != len(axes_list):
-            raise IndexError(
-                'the lengths of the points and axes list does not match')
-
         point_plotting.add_oriented_points(
-            self._ax, points, axes_list, style, length, color)
+            self._ax, oriented_points, style, length, color, linewidth)
 
     # ==========
     # VECTORS
