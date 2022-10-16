@@ -1,3 +1,16 @@
+# bgplot
+
+![alt text](/bgplot/assets/bgplot_logo.png)
+
+Basic Geometry Plotter (bgplot) is a simple python library used for fast and quick geometric graphics representation.
+
+## Installation
+```
+pip install bgplot
+```
+
+## Basic Usage
+```python
 import bgplot as bgp
 from bgplot.entities import Point, Vector, Line, Plane, Axes
 
@@ -35,3 +48,8 @@ graphics.add_point(intersection_point, color=bgp.Colors.red)
 
 graphics.set_title('Visual representation')
 graphics.show()
+
+```
+![alt text](/bgplot/assets/bgplot_figure.png)
+
+## Documentation
