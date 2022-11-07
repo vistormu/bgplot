@@ -19,9 +19,9 @@ class Graphics:
         self.elevation: float = 0.0
         self.lock_aspect_ratio: bool = True
         self._title: str = ''
-        self.x_limits: tuple[float] = None
-        self.y_limits: tuple[float] = None
-        self.z_limits: tuple[float] = None
+        self.x_limits: tuple[float, float] = None
+        self.y_limits: tuple[float, float] = None
+        self.z_limits: tuple[float, float] = None
         self.disable_inputs: tuple[str] = ()
         self.background: tuple[str, str] = ()
         self._recreate_figure()
@@ -129,19 +129,19 @@ class Graphics:
         self._recreate_figure()
         self._reset_methods()
 
-    def set_limits(self, xlim: tuple[float], ylim: tuple[float], zlim: tuple[float], lock_aspect_ratio: bool = True) -> None:
+    def set_limits(self, xlim: tuple[float, float], ylim: tuple[float, float], zlim: tuple[float, float], lock_aspect_ratio: bool = True) -> None:
         """
         sets the limits of each axis of the figure
 
         Parameters
         ----------
-        xlim : tuple[float]
+        xlim : tuple[float, float]
             the limits of the x axis
 
-        ylim : tuple[float]
+        ylim : tuple[float, float]
             the limits of the y axis
 
-        zlim : tuple[float]
+        zlim : tuple[float, float]
             the limits of the z axis
 
         lock_aspect_ratio : bool, optional
@@ -248,7 +248,7 @@ class Graphics:
         """
         point_plotting.add_point(self._ax, point, color)
 
-    def add_points(self, points: list[Point], style: str = 'o', color: str = Colors.black, linewidth: float = 1.0) -> None:
+    def add_points(self, points: list[Point], style: str = 'o', color: str = Colors.black, width: float = 1.0) -> None:
         """
         adds multiple points to be displayed
 
@@ -263,7 +263,7 @@ class Graphics:
         color : str, optional
             the color of the points. Uses the same notation as matplotlib's color code. ~.Colors.black by default
 
-        linewidth : float, optional
+        width : float, optional
             the width of the displayed line. 1.0 by default
 
         See Also
@@ -272,7 +272,7 @@ class Graphics:
         add_oriented_point : adds a point with orientation to be displayed
         add_oriented_points : adds multiple points with orientation to be displayed
         """
-        point_plotting.add_points(self._ax, points, style, color, linewidth)
+        point_plotting.add_points(self._ax, points, style, color, width)
 
     def add_oriented_point(self, oriented_point: OrientedPoint, length: float = 0.1, color: str = Colors.black) -> None:
         """
@@ -299,10 +299,9 @@ class Graphics:
         add_points : adds multiple points to be displayed
         add_oriented_points : adds multiple points with orientation to be displayed
         """
-        point_plotting.add_oriented_point(
-            self._ax, oriented_point, length, color)
+        point_plotting.add_oriented_point(self._ax, oriented_point, length, color)
 
-    def add_oriented_points(self, oriented_points: list[OrientedPoint], style: str = 'o', length: float = 0.1, color: str = Colors.black, linewidth: float = 1.0) -> None:
+    def add_oriented_points(self, oriented_points: list[OrientedPoint], style: str = 'o', length: float = 0.1, color: str = Colors.black, width: float = 1.0) -> None:
         """
         adds multiple points with orientation to be displayed
 
@@ -320,7 +319,7 @@ class Graphics:
         color : str, optional
             the color of the points. ~.Colors.black by default
 
-        linewidth : float, optional
+        width : float, optional
             the width of the displayed line. 1.0 by default
 
         Notes
@@ -333,8 +332,7 @@ class Graphics:
         add_points : adds multiple points to be displayed
         add_oriented_point : adds a point with orientation to be displayed
         """
-        point_plotting.add_oriented_points(
-            self._ax, oriented_points, style, length, color, linewidth)
+        point_plotting.add_oriented_points(self._ax, oriented_points, style, length, color, width)
 
     # ==========
     # VECTORS
@@ -467,7 +465,7 @@ class Graphics:
     # ==========
     # LINES
     # ==========
-    def add_line(self, line: Line, line_range: tuple[float] = (-0.5, 0.5), style: str = '-', color: str = Colors.black, linewidth: float = 1.0) -> None:
+    def add_line(self, line: Line, line_range: tuple[float, float] = (-0.5, 0.5), style: str = '-', color: str = Colors.black, width: float = 1.0) -> None:
         """
         adds a line to be displayed
 
@@ -476,7 +474,7 @@ class Graphics:
         line : ~.entities.line.Line
             the line to be displayed
 
-        line_range : tuple[float], optional
+        line_range : tuple[float, float], optional
              the range of the line to be plotted. From -0.5 to 0.5 by default
 
         style : str, optional
@@ -485,17 +483,16 @@ class Graphics:
         color : str, optional
             the color of the displayed line. Follows the matplotlib's color code. ~.Colors.black by default
 
-        linewidth : float, optional
+        width : float, optional
             the width of the displayed line. 1.0 by default
 
         See Also
         --------
         add_lines : adds multiple lines to be displayed
         """
-        line_plotting.add_line(self._ax, line, line_range,
-                               style, color, linewidth)
+        line_plotting.add_line(self._ax, line, line_range, style, color, width)
 
-    def add_lines(self, lines: list[Line], line_range: tuple[float] = (-0.5, 0.5), style: str = '-', color: str = Colors.black, linewidth: float = 1.0) -> None:
+    def add_lines(self, lines: list[Line], line_range: tuple[float, float] = (-0.5, 0.5), style: str = '-', color: str = Colors.black, linewidth: float = 1.0) -> None:
         """
         adds multiple lines to be displayed
 

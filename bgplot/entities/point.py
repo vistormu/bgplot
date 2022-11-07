@@ -25,6 +25,9 @@ class Point(NamedTuple):
     y: float
     z: float
 
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}({self.x}, {self.y}, {self.z})'
+
     def __sub__(self, other):
         return Point(self.x - other.x, self.y - other.y, self.z - other.z)
 

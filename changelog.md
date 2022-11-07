@@ -1,3 +1,12 @@
+# 0.0.10
+- Fixed type annotations for some arguments
+- Fixed purple color
+- Added more colors
+- Added a new method to the OrientedPoint class that transforms an instance to a homogeneous transformation matrix
+- Changed linewidth argument to just width
+- Changed the add_point representation from scatter to plot
+- Changed repr for some classes
+
 # 0.0.9
 - Fixed matplotlib version to 3.5.2
 - Fixed a bug where using show after update did not work

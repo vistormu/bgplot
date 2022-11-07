@@ -21,3 +21,6 @@ class Axes(NamedTuple):
     x: Vector
     y: Vector
     z: Vector
+
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}(({self.x.u}, {self.x.v}, {self.x.w}), ({self.y.u}, {self.y.v}, {self.y.w}), ({self.z.u}, {self.z.v}, {self.z.w}))'

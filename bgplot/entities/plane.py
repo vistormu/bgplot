@@ -46,7 +46,8 @@ class Plane:
 
         Returns
         -------
-            out : ~.entities.plane.Plane
+        out : ~.entities.plane.Plane
+            the plane formed by the given normal vector and point
 
         Raises
         ------

@@ -8,9 +8,9 @@ def add_plane(figure: mplAxes, plane: Plane, center: Point, size: float, alpha: 
     linspace: np.ndarray = np.linspace(-size, size, 2)
     meshgrid: list[np.ndarray] = np.meshgrid(linspace, linspace)
 
-    non_zero_vector: tuple(int) = (0 if abs(plane.a) < 0.01 else 1,
-                                   0 if abs(plane.b) < 0.01 else 1,
-                                   0 if abs(plane.c) < 0.01 else 1)
+    non_zero_vector: tuple[int, int, int] = (0 if abs(plane.a) < 0.01 else 1,
+                                             0 if abs(plane.b) < 0.01 else 1,
+                                             0 if abs(plane.c) < 0.01 else 1)
 
     match(non_zero_vector):
         case (0, 0, 1):
@@ -51,9 +51,9 @@ def add_planes(figure: mplAxes, planes: list[Plane], centers: list[Point], size:
         linspace: np.ndarray = np.linspace(-size, size, 2)
         meshgrid: list[np.ndarray] = np.meshgrid(linspace, linspace)
 
-        non_zero_vector: tuple(int) = (0 if abs(plane.a) < 0.01 else 1,
-                                       0 if abs(plane.b) < 0.01 else 1,
-                                       0 if abs(plane.c) < 0.01 else 1)
+        non_zero_vector: tuple[int, int, int] = (0 if abs(plane.a) < 0.01 else 1,
+                                                 0 if abs(plane.b) < 0.01 else 1,
+                                                 0 if abs(plane.c) < 0.01 else 1)
 
         match(non_zero_vector):
             case (0, 0, 1):

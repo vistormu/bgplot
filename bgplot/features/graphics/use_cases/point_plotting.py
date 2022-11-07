@@ -1,12 +1,12 @@
 from matplotlib.axes import Axes as mplAxes
 
-from ....entities import Point, Axes, OrientedPoint
+from ....entities import Point, OrientedPoint
 from ..core.colors import Colors
 
 # TMP
 
 
-def _get_color(value: str) -> tuple[float, float, float, float]:
+def _get_color(value: str) -> tuple[float, float, float]:
     stripped_code = value.lstrip('#')
     rgb_value = tuple(int(stripped_code[i:i+2], 16) for i in (0, 2, 4))
     r: float = rgb_value[0]/255.0
@@ -17,15 +17,15 @@ def _get_color(value: str) -> tuple[float, float, float, float]:
 
 
 def add_point(figure: mplAxes, point: Point, color: str) -> None:
-    figure.scatter(*point, c=color)
+    figure.plot(*point, '.', c=color)
 
 
-def add_points(figure: mplAxes, points: list[Point], style: str, color: str, linewidth: float) -> None:
+def add_points(figure: mplAxes, points: list[Point], style: str, color: str, width: float) -> None:
     x: list[float] = [point.x for point in points]
     y: list[float] = [point.y for point in points]
     z: list[float] = [point.z for point in points]
 
-    figure.plot(x, y, z, style, c=color, lw=linewidth)
+    figure.plot(x, y, z, style, c=color, lw=width)
 
 
 def add_oriented_point(figure: mplAxes, oriented_point: OrientedPoint, length: float, color: str) -> None:
@@ -44,10 +44,10 @@ def add_oriented_point(figure: mplAxes, oriented_point: OrientedPoint, length: f
                   length=length,
                   colors=_get_color(Colors.blue))
 
-    figure.scatter(*oriented_point.position, c=color)
+    figure.plot(*oriented_point.position, '.', c=color)
 
 
-def add_oriented_points(figure: mplAxes, oriented_points: list[OrientedPoint], style: str, length: float, color: str, linewidth: float) -> None:
+def add_oriented_points(figure: mplAxes, oriented_points: list[OrientedPoint], style: str, length: float, color: str, width: float) -> None:
     x: list[float] = [
         oriented_point.position.x for oriented_point in oriented_points]
     y: list[float] = [
@@ -88,4 +88,4 @@ def add_oriented_points(figure: mplAxes, oriented_points: list[OrientedPoint], s
                   length=length,
                   colors=_get_color(Colors.blue))
 
-    figure.plot(x, y, z, style, c=color, lw=linewidth)
+    figure.plot(x, y, z, style, c=color, lw=width)

@@ -6,7 +6,7 @@ from ..core.colors import Colors
 # TMP
 
 
-def _get_color(value: str) -> tuple[float, float, float, float]:
+def _get_color(value: str) -> tuple[float, float, float]:
     stripped_code = value.lstrip('#')
     rgb_value = tuple(int(stripped_code[i:i+2], 16) for i in (0, 2, 4))
     r: float = rgb_value[0]/255.0

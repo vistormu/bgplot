@@ -52,6 +52,6 @@ graphics.show()
 
 graphics.set_title('oriented points')
 graphics.add_oriented_points(
-    [oriented_point_1, oriented_point_2, oriented_point_3], style='.-', linewidth=0.2)
+    [oriented_point_1, oriented_point_2, oriented_point_3], style='.-', width=0.2)
 graphics.set_background_color(bgp.Colors.white)
 graphics.show()

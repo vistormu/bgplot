@@ -26,6 +26,9 @@ class Vector(NamedTuple):
     v: float
     w: float
 
+    def __repr__(self) -> str:
+        return f'{self.__class__.__name__}({self.u}, {self.v}, {self.w})'
+
     def __mul__(self, scalar):
         return Vector(self.u*scalar, self.v*scalar, self.w * scalar)
 
@@ -44,7 +47,7 @@ class Vector(NamedTuple):
         out : ~.entities.vector.Vector
             the normalized instance of the vector
         """
-        length: float = np.linalg.norm(self)
+        length: float = np.linalg.norm(self).astype(float)
         u: float = self.u / length
         v: float = self.v / length
         w: float = self.w / length
