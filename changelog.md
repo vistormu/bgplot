@@ -1,8 +1,9 @@
 # 0.0.10
+- Migrated to Python 3.11
 - Fixed type annotations for some arguments
 - Fixed purple color
 - Added more colors
-- Added a new method to the OrientedPoint class that transforms an instance to a homogeneous transformation matrix
+- Added a new method to the OrientedPoint class that transforms an instance to a homogeneous transformation matrix and viceversa
 - Changed linewidth argument to just width
 - Changed the add_point representation from scatter to plot
 - Changed repr for some classes

@@ -1,4 +1,5 @@
 import numpy as np
+from typing import Self
 
 from ..entities import Point, Vector, Line
 
@@ -31,8 +32,8 @@ class Plane:
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}(a: {self.a}, b: {self.b}, c: {self.c}, d: {self.d})'
 
-    @staticmethod
-    def from_normal_vector_and_point(vector: Vector, point: Point):
+    @classmethod
+    def from_normal_vector_and_point(cls, vector: Vector, point: Point) -> Self:
         """
         creates a plane from a normal vector and a point
 
@@ -62,10 +63,10 @@ class Plane:
         c: float = vector.w
         d: float = -vector.u*point.x - vector.v*point.y - vector.w*point.z
 
-        return Plane(a, b, c, d)
+        return cls(a, b, c, d)
 
-    @staticmethod
-    def from_three_points(point_1: Point, point_2: Point, point_3: Point):
+    @classmethod
+    def from_three_points(cls, point_1: Point, point_2: Point, point_3: Point) -> Self:
         """
         creates a plane given three different points
 
@@ -95,10 +96,10 @@ class Plane:
         d: float = -normal_vector.u*point_1.x - \
             normal_vector.v*point_1.y - normal_vector.w*point_1.z
 
-        return Plane(a, b, c, d)
+        return cls(a, b, c, d)
 
-    @staticmethod
-    def from_line_and_point(line: Line, point: Point):
+    @classmethod
+    def from_line_and_point(cls, line: Line, point: Point) -> Self:
         """
         creates a plane from a line and a point
 
@@ -126,10 +127,10 @@ class Plane:
         d: float = -normal_vector.u*point.x - \
             normal_vector.v*point.y - normal_vector.w*point.z
 
-        return Plane(a, b, c, d)
+        return cls(a, b, c, d)
 
-    @staticmethod
-    def from_two_vectors_and_point(vector_1: Vector, vector_2: Vector, point: Point):
+    @classmethod
+    def from_two_vectors_and_point(cls, vector_1: Vector, vector_2: Vector, point: Point) -> Self:
         """
         creates a plane from two vectors and a point
 
@@ -165,4 +166,4 @@ class Plane:
         d: float = -normal_vector.u*point.x - \
             normal_vector.v*point.y - normal_vector.w*point.z
 
-        return Plane(a, b, c, d)
+        return cls(a, b, c, d)
