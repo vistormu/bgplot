@@ -492,7 +492,7 @@ class Graphics:
         """
         line_plotting.add_line(self._ax, line, line_range, style, color, width)
 
-    def add_lines(self, lines: list[Line], line_range: tuple[float, float] = (-0.5, 0.5), style: str = '-', color: str = Colors.black, linewidth: float = 1.0) -> None:
+    def add_lines(self, lines: list[Line], line_range: tuple[float, float] = (-0.5, 0.5), style: str = '-', color: str = Colors.black, width: float = 1.0) -> None:
         """
         adds multiple lines to be displayed
 
@@ -510,20 +510,19 @@ class Graphics:
         color : str, optional
             the color of the displayed lines. Follows the matplotlib's color code. ~.Colors.black by default
 
-        linewidth : float, optional
+        width : float, optional
             the width of the displayed lines. 1.0 by default
 
         See Also
         --------
         add_line : adds line to be displayed
         """
-        line_plotting.add_lines(
-            self._ax, lines, line_range, style, color, linewidth)
+        line_plotting.add_lines(self._ax, lines, line_range, style, color, width)
 
     # ==========
     # PLANES
     # ==========
-    def add_plane(self, plane: Plane, center: Point = Point(0.0, 0.0, 0.0), size: float = 0.2, alpha: float = 0.5) -> None:
+    def add_plane(self, plane: Plane, center: Point = Point(0.0, 0.0, 0.0), size: float = 0.2, alpha: float = 0.5, color: str = Colors.blue) -> None:
         """
         adds plane to be displayed
 
@@ -541,13 +540,16 @@ class Graphics:
         alpha : float, optional
             the opacity value. 0.5 by default
 
+        color : str, optional
+            the color of the plane. ~.Colors.blue by default
+
         See Also
         --------
         add_planes : adds multiple planes to be displayed
         """
-        plane_plotting.add_plane(self._ax, plane, center, size, alpha)
+        plane_plotting.add_plane(self._ax, plane, center, size, alpha, color)
 
-    def add_planes(self, planes: list[Plane], centers: list[Point] = None, size: float = 0.2, alpha: float = 0.5) -> None:
+    def add_planes(self, planes: list[Plane], centers: list[Point] = None, size: float = 0.2, alpha: float = 0.5, color: str = Colors.blue) -> None:
         """
         adds multiple planes to be displayed
 
@@ -565,6 +567,9 @@ class Graphics:
         alpha : float, optional
             the opacity value. 0.5 by default
 
+        color : str, optional
+            the color of the planes. ~.Colors.blue by default
+
         Raises
         ------
         IndexError
@@ -581,4 +586,4 @@ class Graphics:
             raise IndexError(
                 'the lengths of the plane and center list do not match')
 
-        plane_plotting.add_planes(self._ax, planes, centers, size, alpha)
+        plane_plotting.add_planes(self._ax, planes, centers, size, alpha, color)

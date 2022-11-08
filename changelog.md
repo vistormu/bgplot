@@ -7,6 +7,9 @@
 - Changed linewidth argument to just width
 - Changed the add_point representation from scatter to plot
 - Changed repr for some classes
+- Added right multiplication for vectors and points
+- Added scalar division to points and vectors
+- Added colors to plane representations
 
 # 0.0.9
 - Fixed matplotlib version to 3.5.2
@@ -65,7 +68,7 @@
 - Changed names of graphics "plot" functions to "add" functions
 
 # 0.0.2
-- Fixed unexisting import on __init__
+- Fixed unexisting import on \_\_init\_\_
 
 # 0.0.1
 - First version of the library

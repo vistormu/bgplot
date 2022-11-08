@@ -4,7 +4,7 @@ from matplotlib.axes import Axes as mplAxes
 from ....entities import Plane, Point
 
 
-def add_plane(figure: mplAxes, plane: Plane, center: Point, size: float, alpha: float) -> None:
+def add_plane(figure: mplAxes, plane: Plane, center: Point, size: float, alpha: float, color: str) -> None:
     linspace: np.ndarray = np.linspace(-size, size, 2)
     meshgrid: list[np.ndarray] = np.meshgrid(linspace, linspace)
 
@@ -43,10 +43,10 @@ def add_plane(figure: mplAxes, plane: Plane, center: Point, size: float, alpha: 
             plane_z: np.ndarray = (-plane.d - plane.a *
                                    plane_x - plane.b*plane_y)/plane.c
 
-    figure.plot_surface(plane_x, plane_y, plane_z, alpha=alpha)
+    figure.plot_surface(plane_x, plane_y, plane_z, alpha=alpha, color=color)
 
 
-def add_planes(figure: mplAxes, planes: list[Plane], centers: list[Point], size: float, alpha: float) -> None:
+def add_planes(figure: mplAxes, planes: list[Plane], centers: list[Point], size: float, alpha: float, color: str) -> None:
     for plane, center in zip(planes, centers):
         linspace: np.ndarray = np.linspace(-size, size, 2)
         meshgrid: list[np.ndarray] = np.meshgrid(linspace, linspace)
@@ -86,4 +86,4 @@ def add_planes(figure: mplAxes, planes: list[Plane], centers: list[Point], size:
                 plane_z: np.ndarray = (-plane.d - plane.a *
                                        plane_x - plane.b*plane_y)/plane.c
 
-        figure.plot_surface(plane_x, plane_y, plane_z, alpha=alpha)
+        figure.plot_surface(plane_x, plane_y, plane_z, alpha=alpha, color=color)

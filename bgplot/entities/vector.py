@@ -1,5 +1,5 @@
 import numpy as np
-from typing import NamedTuple
+from typing import NamedTuple, Self
 
 
 class Vector(NamedTuple):
@@ -29,16 +29,22 @@ class Vector(NamedTuple):
     def __repr__(self) -> str:
         return f'{self.__class__.__name__}({self.u}, {self.v}, {self.w})'
 
-    def __mul__(self, scalar):
+    def __mul__(self, scalar) -> Self:
         return Vector(self.u*scalar, self.v*scalar, self.w * scalar)
 
-    def __add__(self, other):
+    def __rmul__(self, scalar) -> Self:
+        return Vector(self.u*scalar, self.v*scalar, self.w * scalar)
+
+    def __add__(self, other: Self) -> Self:
         return Vector(self.u+other.u, self.v+other.v, self.w+other.w)
 
-    def __sub__(self, other):
+    def __sub__(self, other: Self) -> Self:
         return Vector(self.u-other.u, self.v-other.v, self.w-other.w)
 
-    def normalize(self):
+    def __truediv__(self, scalar) -> Self:
+        return Vector(self.u/scalar, self.v/scalar, self.w/scalar)
+
+    def normalize(self) -> Self:
         """
         normalizes the vector so its magnitude is unitary
 
