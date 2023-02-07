@@ -1,5 +1,5 @@
 import numpy as np
-from typing import NamedTuple, Self
+from typing import NamedTuple
 
 from .point import Point
 from .axes import Axes
@@ -33,13 +33,13 @@ class OrientedPoint(NamedTuple):
         out : np.ndarray
             the homogeneous transformation matrix as a np array
         """
-        return np.array([[*self.axes.x, 0],
-                         [*self.axes.y, 0],
-                         [*self.axes.z, 0],
-                         [*self.position, 1]]).T
+        return np.array([[*self.axes.x, 0.0],
+                         [*self.axes.y, 0.0],
+                         [*self.axes.z, 0.0],
+                         [*self.position, 1.0]]).T
 
     @classmethod
-    def from_htm(cls, transformation_matrix: np.ndarray) -> Self:
+    def from_htm(cls, transformation_matrix: np.ndarray):
         point: Point = Point(*transformation_matrix[0:3, 3])
         x: Vector = Vector(*transformation_matrix[0:3, 0])
         y: Vector = Vector(*transformation_matrix[0:3, 1])

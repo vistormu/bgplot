@@ -1,3 +1,8 @@
+# 0.0.11
+- Migrated back to Python 3.10.x
+- Updated matplotlib's version
+- Fixed a bug where disabling the ticks dido not produce graphics
+
 # 0.0.10
 - Migrated to Python 3.11
 - Fixed type annotations for some arguments

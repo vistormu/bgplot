@@ -43,7 +43,7 @@ def add_plane(figure: mplAxes, plane: Plane, center: Point, size: float, alpha: 
             plane_z: np.ndarray = (-plane.d - plane.a *
                                    plane_x - plane.b*plane_y)/plane.c
 
-    figure.plot_surface(plane_x, plane_y, plane_z, alpha=alpha, color=color)
+    figure.plot_surface(plane_x, plane_y, plane_z, alpha=alpha, color=color)  # type: ignore
 
 
 def add_planes(figure: mplAxes, planes: list[Plane], centers: list[Point], size: float, alpha: float, color: str) -> None:
@@ -86,4 +86,4 @@ def add_planes(figure: mplAxes, planes: list[Plane], centers: list[Point], size:
                 plane_z: np.ndarray = (-plane.d - plane.a *
                                        plane_x - plane.b*plane_y)/plane.c
 
-        figure.plot_surface(plane_x, plane_y, plane_z, alpha=alpha, color=color)
+        figure.plot_surface(plane_x, plane_y, plane_z, alpha=alpha, color=color)  # type: ignore

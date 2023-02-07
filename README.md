@@ -29,19 +29,17 @@ graphics.set_background_color(bgp.Colors.white)
 point: Point = Point(1.0, 1.0, 1.0)
 vector: Vector = Vector(0.0, 0.0, -1.0)
 line: Line = Line.from_vector_and_point(vector, point)
-plane: Plane = Plane.from_normal_vector_and_point(Vector(0.0, 0.0, 1.0),
-                                                  Point(0.0, 0.0, 0.0))
+plane: Plane = Plane.from_normal_vector_and_point(Vector(0.0, 0.0, 1.0), Point(0.0, 0.0, 0.0))
 axes: Axes = Axes(Vector(1.0, 0.0, 0.0),
                   Vector(0.0, 1.0, 0.0),
                   Vector(0.0, 0.0, 1.0))
-intersection_point: Point = bgp.ops.get_intersection_of_line_and_plane(line,
-                                                                       plane)
+intersection_point: Point = bgp.ops.get_intersection_of_line_and_plane(line, plane)
 
 # Representation
 graphics.add_point(point)
 graphics.add_vector(vector, position=point, color=bgp.Colors.pink)
 graphics.add_line(line, style='--', line_range=(0.0, 1.0),
-                  color=bgp.Colors.gray, linewidth=0.7)
+                  color=bgp.Colors.gray, width=0.7)
 graphics.add_plane(plane, center=intersection_point, alpha=0.3)
 graphics.add_axes(axes)
 graphics.add_point(intersection_point, color=bgp.Colors.red)

@@ -3,8 +3,10 @@ from bgplot.entities import Point, Axes, Vector, OrientedPoint
 
 graphics: bgp.Graphics = bgp.Graphics()
 
-graphics.disable('grid', 'ticks', 'axes', 'walls')
-graphics.set_background_color(bgp.Colors.white)
+graphics.set_limits((0.0, 1.0), (0.0, 1.0), (0.0, 1.0))
+graphics.set_view(20.0, 20.0)
+graphics.disable('grid', 'axes', 'walls', 'ticks')
+graphics.set_background_color(bgp.Colors.white, part='floor')
 
 # Simple point plotting
 point_1: Point = Point(0.0, 0.0, 0.0)

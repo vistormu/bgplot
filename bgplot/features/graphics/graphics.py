@@ -19,11 +19,11 @@ class Graphics:
         self.elevation: float = 0.0
         self.lock_aspect_ratio: bool = True
         self._title: str = ''
-        self.x_limits: tuple[float, float] = None
-        self.y_limits: tuple[float, float] = None
-        self.z_limits: tuple[float, float] = None
-        self.disable_inputs: tuple[str] = ()
-        self.background: tuple[str, str] = ()
+        self.x_limits: tuple[float, float] = None  # type: ignore
+        self.y_limits: tuple[float, float] = None  # type: ignore
+        self.z_limits: tuple[float, float] = None  # type: ignore
+        self.disable_inputs: tuple[str] = ()  # type: ignore
+        self.background: tuple[str, str] = ()  # type: ignore
         self._recreate_figure()
 
     def _recreate_figure(self) -> None:
@@ -157,14 +157,14 @@ class Graphics:
         # Set limits
         self._ax.set_xlim(*xlim)
         self._ax.set_ylim(*ylim)
-        self._ax.set_zlim(*zlim)
+        self._ax.set_zlim(*zlim)  # type: ignore
 
         # Set aspect ratio
         if self.lock_aspect_ratio:
             ratio: float = xlim[1]-xlim[0]
             self._ax.set_box_aspect(aspect=(1.0,
                                             (ylim[1]-ylim[0])/ratio,
-                                            (zlim[1]-zlim[0])/ratio))
+                                            (zlim[1]-zlim[0])/ratio))  # type: ignore
 
     def set_view(self, azimut: float, elevation: float) -> None:
         """
@@ -182,7 +182,7 @@ class Graphics:
         self.azimut = azimut
         self.elevation = elevation
 
-        self._ax.view_init(elev=elevation, azim=azimut)
+        self._ax.view_init(elev=elevation, azim=azimut)  # type: ignore
 
     def disable(self, *disable_inputs) -> None:
         """
@@ -364,7 +364,7 @@ class Graphics:
         """
         vector_plotting.add_vector(self._ax, vector, position, length, color)
 
-    def add_vectors(self, vectors: list[Vector], positions: list[Point] = None, length: float = 0.1, color: str = Colors.black) -> None:
+    def add_vectors(self, vectors: list[Vector], positions: list[Point] | None = None, length: float = 0.1, color: str = Colors.black) -> None:
         """
         add multiple vectors to be displayed
 
@@ -396,7 +396,7 @@ class Graphics:
         add_vector : add a vector to be displayed
         """
         if positions is None:
-            positions: list[Point] = [Point(0.0, 0.0, 0.0)]*len(vectors)
+            positions = [Point(0.0, 0.0, 0.0)]*len(vectors)
 
         if len(vectors) != len(positions):
             raise IndexError(
@@ -429,7 +429,7 @@ class Graphics:
         """
         axes_plotting.add_axes(self._ax, axes, position, length)
 
-    def add_multiple_axes(self, axes_list: list[Axes], positions: list[Point] = None, length: float = 0.1) -> None:
+    def add_multiple_axes(self, axes_list: list[Axes], positions: list[Point] | None = None, length: float = 0.1) -> None:
         """
         adds multiple axes to be displayed
 
@@ -454,7 +454,7 @@ class Graphics:
         add_axes : adds axes to be displayed
         """
         if positions is None:
-            positions: list[Point] = [Point(0.0, 0.0, 0.0)]*len(axes_list)
+            positions = [Point(0.0, 0.0, 0.0)]*len(axes_list)
 
         if len(axes_list) != len(positions):
             raise IndexError(
@@ -549,7 +549,7 @@ class Graphics:
         """
         plane_plotting.add_plane(self._ax, plane, center, size, alpha, color)
 
-    def add_planes(self, planes: list[Plane], centers: list[Point] = None, size: float = 0.2, alpha: float = 0.5, color: str = Colors.blue) -> None:
+    def add_planes(self, planes: list[Plane], centers: list[Point] | None = None, size: float = 0.2, alpha: float = 0.5, color: str = Colors.blue) -> None:
         """
         adds multiple planes to be displayed
 
@@ -580,7 +580,7 @@ class Graphics:
         add_plane : adds plane to be displayed
         """
         if centers is None:
-            centers: list[Point] = [Point(0.0, 0.0, 0.0)]*len(planes)
+            centers = [Point(0.0, 0.0, 0.0)]*len(planes)
 
         if len(planes) != len(centers):
             raise IndexError(

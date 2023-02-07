@@ -18,10 +18,10 @@ Logger.info(oriented_point)
 Logger.info('%%%%%%')
 
 # HTM
-htm: np.ndarray = np.array([[*axes.x, 0],
-                            [*axes.y, 0],
-                            [*axes.z, 0],
-                            [*point, 1]]).T
+htm: np.ndarray = np.array([[*axes.x, 0.0],
+                            [*axes.y, 0.0],
+                            [*axes.z, 0.0],
+                            [*point, 1.0]]).T
 
 oriented_point: OrientedPoint = OrientedPoint.from_htm(htm)
 

@@ -1,5 +1,3 @@
-from typing import Self
-
 from .point import Point
 from .vector import Vector
 
@@ -41,7 +39,7 @@ class Line:
         return f'{self.__class__.__name__}(u: {self.u}, v: {self.v}, w: {self.w}, x: {self.x}, y: {self.y}, z: {self.z})'
 
     @classmethod
-    def from_two_points(cls, point_1: Point, point_2: Point) -> Self:
+    def from_two_points(cls, point_1: Point, point_2: Point):
         """
         creates a Line instance given two points
 
@@ -71,7 +69,7 @@ class Line:
         return cls(u, v, w, x, y, z)
 
     @classmethod
-    def from_vector_and_point(cls, vector: Vector, point: Point) -> Self:
+    def from_vector_and_point(cls, vector: Vector, point: Point):
         """
         creates a Line instance given a director vector and a point
 

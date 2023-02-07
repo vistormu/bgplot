@@ -27,4 +27,4 @@ for _ in range(100):
 
     graphics.add_point(Point(x, 0.0, 0.0), color=bgp.Colors.blue)
 
-    graphics.update(1)
+    graphics.update(10)

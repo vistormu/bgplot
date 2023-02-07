@@ -1,5 +1,4 @@
 import numpy as np
-from typing import Self
 
 from ..entities import Point, Vector, Line
 
@@ -33,7 +32,7 @@ class Plane:
         return f'{self.__class__.__name__}(a: {self.a}, b: {self.b}, c: {self.c}, d: {self.d})'
 
     @classmethod
-    def from_normal_vector_and_point(cls, vector: Vector, point: Point) -> Self:
+    def from_normal_vector_and_point(cls, vector: Vector, point: Point):
         """
         creates a plane from a normal vector and a point
 
@@ -66,7 +65,7 @@ class Plane:
         return cls(a, b, c, d)
 
     @classmethod
-    def from_three_points(cls, point_1: Point, point_2: Point, point_3: Point) -> Self:
+    def from_three_points(cls, point_1: Point, point_2: Point, point_3: Point):
         """
         creates a plane given three different points
 
@@ -99,7 +98,7 @@ class Plane:
         return cls(a, b, c, d)
 
     @classmethod
-    def from_line_and_point(cls, line: Line, point: Point) -> Self:
+    def from_line_and_point(cls, line: Line, point: Point):
         """
         creates a plane from a line and a point
 
@@ -130,7 +129,7 @@ class Plane:
         return cls(a, b, c, d)
 
     @classmethod
-    def from_two_vectors_and_point(cls, vector_1: Vector, vector_2: Vector, point: Point) -> Self:
+    def from_two_vectors_and_point(cls, vector_1: Vector, vector_2: Vector, point: Point):
         """
         creates a plane from two vectors and a point
 
