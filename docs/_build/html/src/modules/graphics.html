@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; bgplot  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="operations.html" />
+    <link rel="prev" title="API Reference" href="../api_reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            bgplot
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api_reference.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../api_reference.html#features">Features</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">Graphics</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_axes"><code class="docutils literal notranslate"><span class="pre">Graphics.add_axes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_line"><code class="docutils literal notranslate"><span class="pre">Graphics.add_line()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_lines"><code class="docutils literal notranslate"><span class="pre">Graphics.add_lines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_multiple_axes"><code class="docutils literal notranslate"><span class="pre">Graphics.add_multiple_axes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_oriented_point"><code class="docutils literal notranslate"><span class="pre">Graphics.add_oriented_point()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_oriented_points"><code class="docutils literal notranslate"><span class="pre">Graphics.add_oriented_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_plane"><code class="docutils literal notranslate"><span class="pre">Graphics.add_plane()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_planes"><code class="docutils literal notranslate"><span class="pre">Graphics.add_planes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_point"><code class="docutils literal notranslate"><span class="pre">Graphics.add_point()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_points"><code class="docutils literal notranslate"><span class="pre">Graphics.add_points()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_vector"><code class="docutils literal notranslate"><span class="pre">Graphics.add_vector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_vectors"><code class="docutils literal notranslate"><span class="pre">Graphics.add_vectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.clear"><code class="docutils literal notranslate"><span class="pre">Graphics.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.close"><code class="docutils literal notranslate"><span class="pre">Graphics.close()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.disable"><code class="docutils literal notranslate"><span class="pre">Graphics.disable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.set_background_color"><code class="docutils literal notranslate"><span class="pre">Graphics.set_background_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.set_limits"><code class="docutils literal notranslate"><span class="pre">Graphics.set_limits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.set_title"><code class="docutils literal notranslate"><span class="pre">Graphics.set_title()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.set_view"><code class="docutils literal notranslate"><span class="pre">Graphics.set_view()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.show"><code class="docutils literal notranslate"><span class="pre">Graphics.show()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.update"><code class="docutils literal notranslate"><span class="pre">Graphics.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="operations.html"><code class="docutils literal notranslate"><span class="pre">distance_between_two_points()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="operations.html#bgplot.features.operations.operations.get_angle_of_two_vectors"><code class="docutils literal notranslate"><span class="pre">get_angle_of_two_vectors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="operations.html#bgplot.features.operations.operations.get_intersection_of_line_and_plane"><code class="docutils literal notranslate"><span class="pre">get_intersection_of_line_and_plane()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="operations.html#bgplot.features.operations.operations.project_line_on_plane"><code class="docutils literal notranslate"><span class="pre">project_line_on_plane()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="operations.html#bgplot.features.operations.operations.project_vector_on_plane"><code class="docutils literal notranslate"><span class="pre">project_vector_on_plane()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api_reference.html#entities">Entities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Minimal Working Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">bgplot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../api_reference.html">API Reference</a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/src/modules/graphics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="module-bgplot.features.graphics.graphics"></span><dl class="py class">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bgplot.features.graphics.graphics.</span></span><span class="sig-name descname"><span class="pre">Graphics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">200</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics" title="Permalink to this definition"></a></dt>
+<dd><p>the ~.Graphics class includes the graphical representation of all the bgplot’s entities</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_axes">
+<span class="sig-name descname"><span class="pre">add_axes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="axes.html#bgplot.entities.axes.Axes" title="bgplot.entities.axes.Axes"><span class="pre">Axes</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="point.html#bgplot.entities.point.Point" title="bgplot.entities.point.Point"><span class="pre">Point</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Point(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_axes" title="Permalink to this definition"></a></dt>
+<dd><p>adds axes to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>axes</strong><span class="classifier">~.entities.axes.Axes</span></dt><dd><p>the axes to be displayed</p>
+</dd>
+<dt><strong>position</strong><span class="classifier">~.entities.point.Point, optional</span></dt><dd><p>the position of the axes. By default on the origin</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">float, optional</span></dt><dd><p>the length of the displayed axes. 0.1 by default</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_multiple_axes" title="bgplot.features.graphics.graphics.Graphics.add_multiple_axes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_multiple_axes</span></code></a></dt><dd><p>adds multiple axes to be displayed</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_line">
+<span class="sig-name descname"><span class="pre">add_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="line.html#bgplot.entities.line.Line" title="bgplot.entities.line.Line"><span class="pre">Line</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(-0.5,</span> <span class="pre">0.5)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#4d5359'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_line" title="Permalink to this definition"></a></dt>
+<dd><p>adds a line to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>line</strong><span class="classifier">~.entities.line.Line</span></dt><dd><p>the line to be displayed</p>
+</dd>
+<dt><strong>line_range</strong><span class="classifier">tuple[float, float], optional</span></dt><dd><p>the range of the line to be plotted. From -0.5 to 0.5 by default</p>
+</dd>
+<dt><strong>style</strong><span class="classifier">str, optional</span></dt><dd><p>the style of the line. Follows the matplotlib’s style code. ‘-’ by default</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>the color of the displayed line. Follows the matplotlib’s color code. ~.Colors.black by default</p>
+</dd>
+<dt><strong>width</strong><span class="classifier">float, optional</span></dt><dd><p>the width of the displayed line. 1.0 by default</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_lines" title="bgplot.features.graphics.graphics.Graphics.add_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_lines</span></code></a></dt><dd><p>adds multiple lines to be displayed</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_lines">
+<span class="sig-name descname"><span class="pre">add_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="line.html#bgplot.entities.line.Line" title="bgplot.entities.line.Line"><span class="pre">bgplot.entities.line.Line</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_range</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(-0.5,</span> <span class="pre">0.5)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#4d5359'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_lines" title="Permalink to this definition"></a></dt>
+<dd><p>adds multiple lines to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>lines</strong><span class="classifier">list[~.entities.line.Line]</span></dt><dd><p>the list of lines to be displayed</p>
+</dd>
+<dt><strong>line_range</strong><span class="classifier">tuple[float], optional</span></dt><dd><p>the range of the lines to be plotted. From -2.0 to 2.0 by default</p>
+</dd>
+<dt><strong>style</strong><span class="classifier">str, optional</span></dt><dd><p>the style of the lines. Follows the matplotlib’s style code. ‘-’ by default</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>the color of the displayed lines. Follows the matplotlib’s color code. ~.Colors.black by default</p>
+</dd>
+<dt><strong>width</strong><span class="classifier">float, optional</span></dt><dd><p>the width of the displayed lines. 1.0 by default</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_line" title="bgplot.features.graphics.graphics.Graphics.add_line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_line</span></code></a></dt><dd><p>adds line to be displayed</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_multiple_axes">
+<span class="sig-name descname"><span class="pre">add_multiple_axes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axes_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="axes.html#bgplot.entities.axes.Axes" title="bgplot.entities.axes.Axes"><span class="pre">bgplot.entities.axes.Axes</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="point.html#bgplot.entities.point.Point" title="bgplot.entities.point.Point"><span class="pre">bgplot.entities.point.Point</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_multiple_axes" title="Permalink to this definition"></a></dt>
+<dd><p>adds multiple axes to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>axes_list</strong><span class="classifier">list[~.entities.axes.Axes]</span></dt><dd><p>the list of axes to be displayed</p>
+</dd>
+<dt><strong>positions</strong><span class="classifier">list[~.entities.point.Point], optional</span></dt><dd><p>the positions of the axes. By default on the origin</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">float, optional</span></dt><dd><p>the length of the plotted axes. 0.1 by default</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>IndexError</dt><dd><p>if the lengths of the axes list and positions do not match</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_axes" title="bgplot.features.graphics.graphics.Graphics.add_axes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_axes</span></code></a></dt><dd><p>adds axes to be displayed</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_oriented_point">
+<span class="sig-name descname"><span class="pre">add_oriented_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oriented_point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="oriented_point.html#bgplot.entities.oriented_point.OrientedPoint" title="bgplot.entities.oriented_point.OrientedPoint"><span class="pre">OrientedPoint</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#4d5359'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_oriented_point" title="Permalink to this definition"></a></dt>
+<dd><p>adds a point with orientation to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>oriented_point</strong><span class="classifier">~.entities.oriented_point.OrientedPoint</span></dt><dd><p>the point to be added</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">float, optional</span></dt><dd><p>the length of the displayed axes. 0.1 by default</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>the color of the point. ~.Colors.black by default</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_point" title="bgplot.features.graphics.graphics.Graphics.add_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_point</span></code></a></dt><dd><p>adds a point to be displayed</p>
+</dd>
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_points" title="bgplot.features.graphics.graphics.Graphics.add_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_points</span></code></a></dt><dd><p>adds multiple points to be displayed</p>
+</dd>
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_oriented_points" title="bgplot.features.graphics.graphics.Graphics.add_oriented_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_oriented_points</span></code></a></dt><dd><p>adds multiple points with orientation to be displayed</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>the color of the axes are given by the standard x-red, y-green, z-blue</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_oriented_points">
+<span class="sig-name descname"><span class="pre">add_oriented_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oriented_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="oriented_point.html#bgplot.entities.oriented_point.OrientedPoint" title="bgplot.entities.oriented_point.OrientedPoint"><span class="pre">bgplot.entities.oriented_point.OrientedPoint</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'o'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#4d5359'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_oriented_points" title="Permalink to this definition"></a></dt>
+<dd><p>adds multiple points with orientation to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>oriented_points</strong><span class="classifier">list[~.entities.oriented_point.OrientedPoint]</span></dt><dd><p>the oriented points to be added</p>
+</dd>
+<dt><strong>style</strong><span class="classifier">str, optional</span></dt><dd><p>the line style of the connection of points. Follows the matplotlib’s style code. ‘o’ by default</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">float, optional</span></dt><dd><p>the length of the displayed axes. 0.1 by default</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>the color of the points. ~.Colors.black by default</p>
+</dd>
+<dt><strong>width</strong><span class="classifier">float, optional</span></dt><dd><p>the width of the displayed line. 1.0 by default</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_point" title="bgplot.features.graphics.graphics.Graphics.add_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_point</span></code></a></dt><dd><p>adds a point to be displayed</p>
+</dd>
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_points" title="bgplot.features.graphics.graphics.Graphics.add_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_points</span></code></a></dt><dd><p>adds multiple points to be displayed</p>
+</dd>
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_oriented_point" title="bgplot.features.graphics.graphics.Graphics.add_oriented_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_oriented_point</span></code></a></dt><dd><p>adds a point with orientation to be displayed</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>the color of the axes are given by the standard x-red, y-green, z-blue</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_plane">
+<span class="sig-name descname"><span class="pre">add_plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plane</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="plane.html#bgplot.entities.plane.Plane" title="bgplot.entities.plane.Plane"><span class="pre">Plane</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="point.html#bgplot.entities.point.Point" title="bgplot.entities.point.Point"><span class="pre">Point</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Point(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#aecdd2'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_plane" title="Permalink to this definition"></a></dt>
+<dd><p>adds plane to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>plane</strong><span class="classifier">~.entities.plane.Plane</span></dt><dd><p>the plane to be displayed</p>
+</dd>
+<dt><strong>center</strong><span class="classifier">~.entities.point.Point, optional</span></dt><dd><p>the center point of the plane. By default on the origin</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">float, optional</span></dt><dd><p>the size of the plane. 0.2 by default</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>the opacity value. 0.5 by default</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>the color of the plane. ~.Colors.blue by default</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_planes" title="bgplot.features.graphics.graphics.Graphics.add_planes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_planes</span></code></a></dt><dd><p>adds multiple planes to be displayed</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_planes">
+<span class="sig-name descname"><span class="pre">add_planes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">planes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="plane.html#bgplot.entities.plane.Plane" title="bgplot.entities.plane.Plane"><span class="pre">bgplot.entities.plane.Plane</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="point.html#bgplot.entities.point.Point" title="bgplot.entities.point.Point"><span class="pre">bgplot.entities.point.Point</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#aecdd2'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_planes" title="Permalink to this definition"></a></dt>
+<dd><p>adds multiple planes to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>planes</strong><span class="classifier">list[~.entities.plane.Plane]</span></dt><dd><p>the list of planes to be displayed</p>
+</dd>
+<dt><strong>centers</strong><span class="classifier">list[~.entities.point.Point], optional</span></dt><dd><p>the list of the center of each plane. By default on the origin</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">float, optional</span></dt><dd><p>the sizes of the planes. 0.2 by default</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>the opacity value. 0.5 by default</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>the color of the planes. ~.Colors.blue by default</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>IndexError</dt><dd><p>if the lengths of the plane and center list do not match</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_plane" title="bgplot.features.graphics.graphics.Graphics.add_plane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_plane</span></code></a></dt><dd><p>adds plane to be displayed</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_point">
+<span class="sig-name descname"><span class="pre">add_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="point.html#bgplot.entities.point.Point" title="bgplot.entities.point.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#4d5359'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_point" title="Permalink to this definition"></a></dt>
+<dd><p>adds a point to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>point</strong><span class="classifier">~.entities.point.Point</span></dt><dd><p>the point to be added</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>the color of the point. Uses the same notation as matplotlib’s color code. ~.Colors.black by default</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_points" title="bgplot.features.graphics.graphics.Graphics.add_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_points</span></code></a></dt><dd><p>adds multiple points to be displayed</p>
+</dd>
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_oriented_point" title="bgplot.features.graphics.graphics.Graphics.add_oriented_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_oriented_point</span></code></a></dt><dd><p>adds a point with orientation to be displayed</p>
+</dd>
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_oriented_points" title="bgplot.features.graphics.graphics.Graphics.add_oriented_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_oriented_points</span></code></a></dt><dd><p>adds multiple points with orientation to be displayed</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_points">
+<span class="sig-name descname"><span class="pre">add_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="point.html#bgplot.entities.point.Point" title="bgplot.entities.point.Point"><span class="pre">bgplot.entities.point.Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'o'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#4d5359'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_points" title="Permalink to this definition"></a></dt>
+<dd><p>adds multiple points to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>points</strong><span class="classifier">list[~.entities.point.Point]</span></dt><dd><p>the list of points to be added</p>
+</dd>
+<dt><strong>style</strong><span class="classifier">str, optional</span></dt><dd><p>the style of the line that joins the points. Uses the same notation as matplotlib’s style code. ‘o’ by default</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>the color of the points. Uses the same notation as matplotlib’s color code. ~.Colors.black by default</p>
+</dd>
+<dt><strong>width</strong><span class="classifier">float, optional</span></dt><dd><p>the width of the displayed line. 1.0 by default</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_point" title="bgplot.features.graphics.graphics.Graphics.add_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_point</span></code></a></dt><dd><p>adds a point to be displayed</p>
+</dd>
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_oriented_point" title="bgplot.features.graphics.graphics.Graphics.add_oriented_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_oriented_point</span></code></a></dt><dd><p>adds a point with orientation to be displayed</p>
+</dd>
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_oriented_points" title="bgplot.features.graphics.graphics.Graphics.add_oriented_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_oriented_points</span></code></a></dt><dd><p>adds multiple points with orientation to be displayed</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_vector">
+<span class="sig-name descname"><span class="pre">add_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="vector.html#bgplot.entities.vector.Vector" title="bgplot.entities.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="point.html#bgplot.entities.point.Point" title="bgplot.entities.point.Point"><span class="pre">Point</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Point(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#4d5359'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_vector" title="Permalink to this definition"></a></dt>
+<dd><p>add a vector to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vector</strong><span class="classifier">~.entities.vector.Vector</span></dt><dd><p>the vector to be displayed</p>
+</dd>
+<dt><strong>position</strong><span class="classifier">~.entities.point.Point, optional</span></dt><dd><p>the position of the vector. On the origin by default</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">float, optional</span></dt><dd><p>the length of the displayed vector. 0.1 by default</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>the color of the plotted vector. ‘~.Colors.black by default.</p>
+</dd>
+<dt><strong>Notes</strong></dt><dd></dd>
+<dt><strong>—–</strong></dt><dd></dd>
+<dt><strong>currently, the color of the vector does not support the matplotlib’s color code due to the implementation</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_vectors" title="bgplot.features.graphics.graphics.Graphics.add_vectors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_vectors</span></code></a></dt><dd><p>add multiple vectors to be displayed</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.add_vectors">
+<span class="sig-name descname"><span class="pre">add_vectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vectors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="vector.html#bgplot.entities.vector.Vector" title="bgplot.entities.vector.Vector"><span class="pre">bgplot.entities.vector.Vector</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="point.html#bgplot.entities.point.Point" title="bgplot.entities.point.Point"><span class="pre">bgplot.entities.point.Point</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#4d5359'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.add_vectors" title="Permalink to this definition"></a></dt>
+<dd><p>add multiple vectors to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>vectors</strong><span class="classifier">list[~.entities.vector.Vector]</span></dt><dd><p>vectors to be added</p>
+</dd>
+<dt><strong>positions</strong><span class="classifier">list[~.entities.point.Point], optional</span></dt><dd><p>list of positions of each vector. By default on the origin</p>
+</dd>
+<dt><strong>length</strong><span class="classifier">float, optional</span></dt><dd><p>the length of the displayed vectors. 0.1 by default</p>
+</dd>
+<dt><strong>color</strong><span class="classifier">str, optional</span></dt><dd><p>the color of the plotted vector. ~.Colors.black by default.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>IndexError</dt><dd><p>if the lengths of the vector and position list do not match</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.add_vector" title="bgplot.features.graphics.graphics.Graphics.add_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_vector</span></code></a></dt><dd><p>add a vector to be displayed</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>currently, the color of the vector does not support the matplotlib’s color code due to the implementation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Description</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>arg1</strong><span class="classifier">type</span></dt><dd><p>description</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">function</span></code></dt><dd><p>description</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.close" title="Permalink to this definition"></a></dt>
+<dd><p>closes the figure window</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.disable">
+<span class="sig-name descname"><span class="pre">disable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">disable_inputs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.disable" title="Permalink to this definition"></a></dt>
+<dd><p>disables plot elements as grid, background, ticks, axes…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>disable_inputs</strong><span class="classifier">tuple[str]</span></dt><dd><dl class="simple">
+<dt>possible values:</dt><dd><ul class="simple">
+<li><p>‘ticks’ for all ticks</p></li>
+<li><p>‘xticks’ for xticks</p></li>
+<li><p>‘yticks’ for yticks</p></li>
+<li><p>‘zticks’ for zticks</p></li>
+<li><p>‘axes’ for all axes</p></li>
+<li><p>‘xaxis’ for the x axis</p></li>
+<li><p>‘yaxis’ for the y axis</p></li>
+<li><p>‘zaxis’ for the z axis</p></li>
+<li><p>‘grid’ for the grid</p></li>
+<li><p>‘background’ for the complete background</p></li>
+<li><p>‘walls’ for the sides of the background</p></li>
+<li><p>‘floor’ for the background floor</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.set_background_color">
+<span class="sig-name descname"><span class="pre">set_background_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">part</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.set_background_color" title="Permalink to this definition"></a></dt>
+<dd><p>sets the background color</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>color</strong><span class="classifier">str</span></dt><dd><p>the color of the background. Supports hex values but not matplotlib’s standard codes</p>
+</dd>
+<dt><strong>part</strong><span class="classifier">str, optional</span></dt><dd><p>the parts of the background to be colored. Use ‘walls’ for the walls and ‘floor’ for the floor</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.set_limits">
+<span class="sig-name descname"><span class="pre">set_limits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xlim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zlim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lock_aspect_ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.set_limits" title="Permalink to this definition"></a></dt>
+<dd><p>sets the limits of each axis of the figure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>xlim</strong><span class="classifier">tuple[float, float]</span></dt><dd><p>the limits of the x axis</p>
+</dd>
+<dt><strong>ylim</strong><span class="classifier">tuple[float, float]</span></dt><dd><p>the limits of the y axis</p>
+</dd>
+<dt><strong>zlim</strong><span class="classifier">tuple[float, float]</span></dt><dd><p>the limits of the z axis</p>
+</dd>
+<dt><strong>lock_aspect_ratio</strong><span class="classifier">bool, optional</span></dt><dd><p>locks the aspect ratio of the figure so the length of all axes are consistent. True by default</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.set_title">
+<span class="sig-name descname"><span class="pre">set_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.set_title" title="Permalink to this definition"></a></dt>
+<dd><p>sets the title for the next figures</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>title</strong><span class="classifier">str</span></dt><dd><p>the title to be set</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.set_view">
+<span class="sig-name descname"><span class="pre">set_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">azimut</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elevation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.set_view" title="Permalink to this definition"></a></dt>
+<dd><p>sets the viewing angle given the azimut and the elevation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.show" title="Permalink to this definition"></a></dt>
+<dd><p>displays all the added entities</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.update" title="bgplot.features.graphics.graphics.Graphics.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a></dt><dd><p>updates the figure for interactive plotting</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>after showing the figure, it will be cleared</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bgplot.features.graphics.graphics.Graphics.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bgplot.features.graphics.graphics.Graphics.update" title="Permalink to this definition"></a></dt>
+<dd><p>updates the figure for interactive plotting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fps</strong><span class="classifier">int</span></dt><dd><p>the frames per second to update the display</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#bgplot.features.graphics.graphics.Graphics.show" title="bgplot.features.graphics.graphics.Graphics.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a></dt><dd><p>displays all the added entities</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../api_reference.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="operations.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Vistor.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
