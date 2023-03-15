@@ -5,9 +5,42 @@
 Basic Geometry Plotter (bgplot) is a simple python library used for fast and quick geometric graphics representation. It is built on top of matplotlib, so it also offers all its capabilities,
 
 ## Installation
+
+Follow the next steps for installing the simulation on your device.
+
+**Requierements:**
+- Ubuntu
+- Python 3.10.0 or higher
+
+### Install miniconda (highly-recommended)
+It is highly recommended to install all the dependencies on a new virtual environment. For more information check the conda documentation for [installation](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) and [environment management](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). For creating the environment use the following commands on the terminal.
+
+```bash
+conda create -n bgplot python==3.10.8
+conda activate bgplot
+```
+
+### Install from pip
+BGPlot is available as a pip package. For installing it just use:
+
 ```
 pip install bgplot
 ```
+
+### Install from source
+Firstly, clone the repository in your system.
+```bash
+git clone https://github.com/vistormu/bgplot.git
+```
+
+Then, enter the directory and install the required dependencies
+```bash
+cd bgplot
+pip install -r requirements.txt
+```
+
+## Documentation
+Visit [the official documentation](https://bgplot.readthedocs.io/en/latest/)
 
 ## Basic Usage
 ```python
@@ -49,5 +82,3 @@ graphics.show()
 
 ```
 ![alt text](/bgplot/assets/bgplot_figure.png)
-
-## Documentation
